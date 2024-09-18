@@ -1,3 +1,6 @@
+using MegaReports.data;
+using ServerAsp.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Agregar servicios al contenedor de dependencias.
@@ -12,8 +15,15 @@ builder.Services.AddCors(options =>
         });
 });
 
+builder.Services.AddTransient<DatabaseManager>(sp =>  //Servicio de database manager 
+{
+    var sqlServerConnection = sp.GetRequiredService<SqlServerConnection>();
+    return new DatabaseManager(sqlServerConnection.getConnectionString());
+});
+
 // Registrar SqlServerConnection como servicio.
 builder.Services.AddSingleton<MegaReports.data.SqlServerConnection>();
+builder.Services.AddControllers();
 
 var app = builder.Build();
 
@@ -28,6 +38,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.MapControllers();
 
 app.UseCors("AllowAngularClient");
 app.Run();
