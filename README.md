@@ -38,7 +38,7 @@ Tenemos este login:
 ![login](images/login.PNG)
 
 Esta es la vista principal donde se ve una lista de todos los tecnicos.
-![vistaListaTecnicos](images/vistaListaTecnicos.jpeg)
+![vistaListaTecnicos](images/vistaTodosTecnicos.jpeg)
 
 Al seleccionar el técnico se va a la vista de detalles y allí se verán los datos de los tecnicos y el calculo de bono por cada una de sus ordenes de trabajo.
 ![vistaTecnicos](images/vistaTecnicos.jpeg)
@@ -46,3 +46,11 @@ Al seleccionar el técnico se va a la vista de detalles y allí se verán los da
 Además de que al final se muestra el cálculo gobalizado por todas las ordenes de trabajo
 ![vistaCalculo](images/vistaCalculo.jpeg)
 
+
+## Proyeccion a futuro
+
+Se podría agregar la funcionalidad de crud para modificar los datos de las ordenes
+
+Tambien se podría implementar el envío automatico de los bonos tanto a los tecnicos como los jefes que ven la parte de la nomina.
+
+Cálculo semanal automatico.
