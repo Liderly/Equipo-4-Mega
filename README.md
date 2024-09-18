@@ -29,7 +29,8 @@ Tuvimos una pequeña reunión para quedar en claro lo que ibamos a hacer.
 
 El equipo de front comenzó a diseñar las vistas y el equipo de backend comenzó a generar los modelos.
 
-
+Tenemos este login:
+![login](images/login.PNG)
 
 ## Concluciones del análisis
 
