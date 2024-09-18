@@ -23,6 +23,11 @@ Se modeló en equipo y se llegó a un diagra entidad relación como el siguente:
 Esto basado en nuestro análisis que hicimos en el material que nos entregaron para dibujar.
 ![preDiagrama](images/preDiagrama.jpeg)
 
+## Concluciones del análisis
+
+Se va a generar un dashboard para los encargados de la nómina de mega.
+En el que el encargado pueda visualizar con reportes, el monto del bono de ese colaborador
+
 Después de tener el diagrama entidad relacion, ya el encargado de base de datos comenzo a escribir los scripts para crear las tablas en nuestra base de datos.
 
 Tuvimos una pequeña reunión para quedar en claro lo que ibamos a hacer.
@@ -32,7 +37,12 @@ El equipo de front comenzó a diseñar las vistas y el equipo de backend comenz�
 Tenemos este login:
 ![login](images/login.PNG)
 
-## Concluciones del análisis
+Esta es la vista principal donde se ve una lista de todos los tecnicos.
+![vistaListaTecnicos](images/vistaListaTecnicos.jpeg)
 
-Se va a generar un dashboard para los encargados de la nómina de mega.
-En el que el encargado pueda visualizar con reportes, el monto del bono de ese colaborador
+Al seleccionar el técnico se va a la vista de detalles y allí se verán los datos de los tecnicos y el calculo de bono por cada una de sus ordenes de trabajo.
+![vistaTecnicos](images/vistaTecnicos.jpeg)
+
+Además de que al final se muestra el cálculo gobalizado por todas las ordenes de trabajo
+![vistaCalculo](images/vistaCalculo.jpeg)
+
