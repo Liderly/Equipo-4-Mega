@@ -1,30 +1,37 @@
-# Hackathon-mega
-## Descripción General
+### Hackathon equipo 4 DevHeros
 
-Bienvenido al proyecto del Hackathon. Este repositorio contiene una estructura en que podrás trabajar tu reto con Angular para el frontend y .NET para la API backend. El proyecto está diseñado para ejecutarse localmente, proporcionando una experiencia completa de desarrollo tanto para el frontend como para el backend.
+## Objetivo
+Reunir a personas en equipo para resolver un problema, en este tipo de eventos se puede ver ya sea  presencialmente o virtual, las actitudes y aptitudes de los integrantes.
 
-## Estructura del Repositorio
+## Proceso
+- Para empezar, antes de las 9:00 nos dierton 15 minutos para escoger y asignar los roles del equipo, comenzamos por preguntarnos entre nosotros qué es lo que nos gustaría hacer, cuáles eran nuestras fortalezas.
 
-```plaintext
-hackathon-proyecto/
-│
-├── frontend/                     # Código fuente del frontend (Angular)
-│   ├── src/                      # Componentes, servicios, y módulos de Angular
-│   ├── README.md                 # Instrucciones específicas del frontend
-│
-├── backend/                      # Código fuente del backend (API .NET)
-│   ├── src/                      # Controladores, modelos y servicios de la API
-│   ├── README.md                 # Instrucciones específicas del backend
-│
-├── docs/                         # Documentación adicional del proyecto
-│   ├── frontend-docs/            # Documentación específica del frontend
-│   ├── backend-docs/             # Documentación específica del backend
-│   └── architecture.md           # Descripción de la arquitectura del proyecto
-│
-├── docker-compose.yml            # Configuración para contenedores en local (opcional)
-├── .gitignore                    # Archivos y carpetas a ignorar por Git
-├── README.md                     # Documentación general del proyecto (este archivo)
-```
-**Este es un template que te puede servir como base, pero recuerda ser creativx en la forma en la que estructuras este repositorio**
+Se tenía que elegir un líder de equipo y un documentador, como roles principales. Se escogieron.
 
-Para más información respecto al evento puedes consultar el siguiente [Notion](https://puzzle-basement-211.notion.site/Hackathon-Semillero-de-talento-Mega-a2a776b0c9394b579341b28033e4f18b)
+Quedamos divididos de la siguiente manera:
+- Una persona se encargaría de la creación de la base de datos y llevar la computadora.
+- Otra persona se dedicaría a verlo del backend
+- Otras dos personas se dedicarían a verlo de el frontend
+- Y otra se dedicaría a la docmentación
+
+Pero antes de eso, todos estuvimos analizando el problema y aportando ideas.
+
+Decidimos empezar por el modelado de la base de datos, una vez entendiendo el problema,
+Se modeló en equipo y se llegó a un diagra entidad relación como el siguente:
+![diagramaEr](images/diagramaER.jpeg)
+
+Esto basado en nuestro análisis que hicimos en el material que nos entregaron para dibujar.
+![preDiagrama](images/preDiagrama.jpeg)
+
+Después de tener el diagrama entidad relacion, ya el encargado de base de datos comenzo a escribir los scripts para crear las tablas en nuestra base de datos.
+
+Tuvimos una pequeña reunión para quedar en claro lo que ibamos a hacer.
+
+El equipo de front comenzó a diseñar las vistas y el equipo de backend comenzó a generar los modelos.
+
+
+
+## Concluciones del análisis
+
+Se va a generar un dashboard para los encargados de la nómina de mega.
+En el que el encargado pueda visualizar con reportes, el monto del bono de ese colaborador
