@@ -25,6 +25,8 @@ namespace MegaReports.Controllers
                             ot.suscriptor_id,
                             t.nombre AS nombre_tecnico,
                             t.apellidos AS apellidos_tecnico,
+                            tr.nombre AS trabajo_nombre,
+	                        tr.puntos AS trabajo_puntos,
                             c.nombre AS cuadrilla_nombre,
                             ot.fecha_inicio,
                             ot.fecha_fin,
