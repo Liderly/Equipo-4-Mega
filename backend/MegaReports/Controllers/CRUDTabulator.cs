@@ -1,9 +1,8 @@
 using System.Data;
 using Microsoft.Data.SqlClient;
-using MegaReports.data;
 using Microsoft.AspNetCore.Mvc;
 using MegaReports.Models;
-using ServerAsp.Data;
+using MegaReports.data;
 
 namespace MegaReports.Controllers
 {

@@ -2,7 +2,7 @@ using System.Data.SqlClient;
 using System.Data;
 using Microsoft.Data.SqlClient;
 
-namespace ServerAsp.Data
+namespace MegaReports.data
 {
     public class DatabaseManager
     {
