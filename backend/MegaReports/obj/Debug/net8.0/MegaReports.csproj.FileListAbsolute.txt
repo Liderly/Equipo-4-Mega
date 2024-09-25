@@ -132,3 +132,8 @@ D:\Usuario Cat\Desktop\PPXP\Practicas_Visual_Basic\Library\Libreria Mega\Equipo-
 D:\Usuario Cat\Desktop\PPXP\Practicas_Visual_Basic\Library\Libreria Mega\Equipo-4-Mega\backend\MegaReports\obj\Debug\net8.0\MegaReports.pdb
 D:\Usuario Cat\Desktop\PPXP\Practicas_Visual_Basic\Library\Libreria Mega\Equipo-4-Mega\backend\MegaReports\obj\Debug\net8.0\MegaReports.genruntimeconfig.cache
 D:\Usuario Cat\Desktop\PPXP\Practicas_Visual_Basic\Library\Libreria Mega\Equipo-4-Mega\backend\MegaReports\obj\Debug\net8.0\ref\MegaReports.dll
+D:\Usuario Cat\Desktop\PPXP\Practicas_Visual_Basic\Library\Libreria Mega\Equipo-4-Mega\backend\MegaReports\bin\Debug\net8.0\Microsoft.OpenApi.dll
+D:\Usuario Cat\Desktop\PPXP\Practicas_Visual_Basic\Library\Libreria Mega\Equipo-4-Mega\backend\MegaReports\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\Usuario Cat\Desktop\PPXP\Practicas_Visual_Basic\Library\Libreria Mega\Equipo-4-Mega\backend\MegaReports\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\Usuario Cat\Desktop\PPXP\Practicas_Visual_Basic\Library\Libreria Mega\Equipo-4-Mega\backend\MegaReports\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\Usuario Cat\Desktop\PPXP\Practicas_Visual_Basic\Library\Libreria Mega\Equipo-4-Mega\backend\MegaReports\obj\Debug\net8.0\MegaReports.MvcApplicationPartsAssemblyInfo.cs

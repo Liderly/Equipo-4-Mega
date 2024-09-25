@@ -10,48 +10,25 @@ public class storedProcedure
     private readonly string _Connection;
 
     public storedProcedure(string _StringConnection) => _Connection = _StringConnection;
-    public int executeStoredProcedurePuntosxTenico(int param)
+        public decimal ExecuteStoredProcedureMontoxTecnico(int TecnicoId)
     {
-        int TotalPuntos = 0;
+        decimal montoTotal = 0;
         using (SqlConnection connection = new SqlConnection(_Connection))
         {
-            using (SqlCommand command = new SqlCommand("ObtenerPuntosTecnico", connection)) // llamar el SP
+            Console.WriteLine("ID del técnico: " + TecnicoId);
+            using (SqlCommand command = new SqlCommand("ObtenerMontoTotalTecnico", connection))
             {
-                param = 1;
                 command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.Add(new SqlParameter("@TecnicoId", param));
-                SqlParameter outputParam = new SqlParameter("@TotalPuntos", SqlDbType.Int)
-                {
-                    Direction = ParameterDirection.Output
-                };
-                command.Parameters.Add(outputParam);
+                command.Parameters.Add(new SqlParameter("@TecnicoId", TecnicoId)); 
 
                 connection.Open();
-                command.ExecuteNonQuery();
-                TotalPuntos = (int)command.Parameters["@TotalPuntos"].Value;
-            }
-        }
-        return TotalPuntos;
-    }
-
-    public List<string> executeStoredProcedureMontoxPuntos()
-    {
-        List<string> results = new List<string>();
-        using (SqlConnection connection = new SqlConnection(_Connection))
-        {
-            connection.Open();
-            using (SqlCommand command = new SqlCommand("ObtenerMontoPorPuntos", connection)) // llamar el SP
-            {
-                command.CommandType = CommandType.StoredProcedure;
-                using (SqlDataReader reader = command.ExecuteReader())
+                var result = command.ExecuteScalar();
+                if (result != null)
                 {
-                    while (reader.Read())
-                    {
-                        results.Add(reader.GetString(0));
-                    }
+                    montoTotal = Convert.ToDecimal(result); 
                 }
             }
         }
-        return results;
+        return montoTotal; 
     }
 }

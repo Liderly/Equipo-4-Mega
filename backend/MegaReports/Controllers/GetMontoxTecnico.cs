@@ -18,11 +18,10 @@ namespace MegaReports.Controllers
         {
             _storedProcedure = storedProcedure;
         }
-
-        [HttpGet("PuntosxTecnico")]
-        public IActionResult executeStoredProcedurePuntosxTenico(int param)
+        [HttpGet("MontoxTecnico")]
+        public IActionResult executeStoredProcedurePuntosxTenico(int TecnicoId)
         {
-            var results = _storedProcedure.executeStoredProcedurePuntosxTenico(param);
+            var results = _storedProcedure.ExecuteStoredProcedureMontoxTecnico(TecnicoId);
             return Ok(results);
         }
     }
