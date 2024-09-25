@@ -21,41 +21,43 @@ namespace MegaReports.Controllers
         [HttpGet("Ordenes")]
         public IActionResult GetOrdenesTrabajo([FromQuery] int id)
         {
-            string query = @"SELECT 
-                            ot.suscriptor_id,
-                            t.nombre AS nombre_tecnico,
-                            t.apellidos AS apellidos_tecnico,
-                            tr.nombre AS trabajo_nombre,
-	                        tr.puntos AS trabajo_puntos,
-                            c.nombre AS cuadrilla_nombre,
-                            ot.fecha_inicio,
-                            ot.fecha_fin,
-                            ot.estatus
-                        FROM 
-                            Orden_de_trabajo ot
-                        JOIN 
-                            Tecnico t ON ot.tecnico_id = t.id
-                        JOIN 
-                            Trabajo tr ON ot.trabajo_id = tr.id
-                        JOIN 
-                            Cuadrilla c ON t.cuadrilla_id = c.id
-                        WHERE t.id = 1;";
-        
+            string query = @"SELECT OT.Id AS IdOrdenTrabajo, 
+                                OT.Tiempo_registro AS TiempoRegistroOrdenTrabajo,
+                                OT.Tiempo_finalizado AS TiempoFinalizadoOrdenTrabajo,
+                                OT.Estatus AS EstatusOrdenTrabajo,
+                                T.Nombre AS NombreTrabajo,
+                                T.Descripcion AS DescripcionTrabajo,
+                                C.Nombre AS NombreCuadrilla,  
+                                S.Nombres AS NombresSuscriptior,
+                                S.Apellido_p AS ApellidoPSuscriptior,
+                                S.Apellido_m AS ApellidoMSuscriptior,
+                                S.Numero_interior AS NumeroInteroprSuscriptor,
+                                S.Numero_exterior AS NumeroExteriorSuscriptor,
+                                S.Codigo_postal AS CodigoPostalSuscriptor,
+                                S.Colonia AS ColoniaSuscriptor,
+                                S.Telefono AS TelefonoSuscriptor
+                            FROM Ordenes_trabajo OT
+                            JOIN Tecnicos TE ON TE.CuadrillaId = OT.CuadrillaId
+                            JOIN Trabajos T ON T.Id = OT.TrabajoId
+                            JOIN Cuadrillas C ON C.Id = OT.CuadrillaId 
+                            JOIN Suscriptores S ON S.Id = OT.SuscriptorId 
+                            WHERE TE.Id = @Id;";
+                        
             var parameters = new[]
             {
-                new SqlParameter("@id", id)
+                new SqlParameter("@Id", id)
             };
 
             var data = _databaseManager.ExecuteQuery(query, parameters);
             var DesData = new List<Dictionary<string, object>>();
             foreach (DataRow row in data.Rows)
             {
-                var favorite = new Dictionary<string, object>();
+                var orden = new Dictionary<string, object>();
                 foreach (DataColumn column in data.Columns)
                 {
-                    favorite.Add(column.ColumnName, row[column]);
+                    orden.Add(column.ColumnName, row[column]);
                 }
-                DesData.Add(favorite);
+                DesData.Add(orden);
             }
             return Ok(DesData);
         }

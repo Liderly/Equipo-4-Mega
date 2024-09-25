@@ -21,6 +21,12 @@ builder.Services.AddTransient<DatabaseManager>(sp =>  //Servicio de database man
     return new DatabaseManager(sqlServerConnection.getConnectionString());
 });
 
+builder.Services.AddScoped<storedProcedure>(sp =>
+{
+    var sqlServerConnection = sp.GetRequiredService<SqlServerConnection>();  // servicio de sp
+    return new storedProcedure(sqlServerConnection.getConnectionString());
+});
+
 // Registrar SqlServerConnection como servicio.
 builder.Services.AddSingleton<MegaReports.data.SqlServerConnection>();
 builder.Services.AddControllers();

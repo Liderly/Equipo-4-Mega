@@ -2565,24 +2565,26 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\bbarraganp\\.nuget\\packages\\": {}
+    "C:\\Users\\PC BRYAN\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\bbarraganp\\Equipo-4-Mega\\backend\\MegaReports\\MegaReports.csproj",
+      "projectUniqueName": "D:\\Usuario Cat\\Desktop\\PPXP\\Practicas_Visual_Basic\\Library\\Libreria Mega\\Equipo-4-Mega\\backend\\MegaReports\\MegaReports.csproj",
       "projectName": "MegaReports",
-      "projectPath": "C:\\Users\\bbarraganp\\Equipo-4-Mega\\backend\\MegaReports\\MegaReports.csproj",
-      "packagesPath": "C:\\Users\\bbarraganp\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\bbarraganp\\Equipo-4-Mega\\backend\\MegaReports\\obj\\",
+      "projectPath": "D:\\Usuario Cat\\Desktop\\PPXP\\Practicas_Visual_Basic\\Library\\Libreria Mega\\Equipo-4-Mega\\backend\\MegaReports\\MegaReports.csproj",
+      "packagesPath": "C:\\Users\\PC BRYAN\\.nuget\\packages\\",
+      "outputPath": "D:\\Usuario Cat\\Desktop\\PPXP\\Practicas_Visual_Basic\\Library\\Libreria Mega\\Equipo-4-Mega\\backend\\MegaReports\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\bbarraganp\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\PC BRYAN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -2630,7 +2632,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
       }
     }
   },
@@ -2639,7 +2641,7 @@
       "code": "NU1903",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'Microsoft.Data.SqlClient' 5.0.1 has a known high severity vulnerability, https://github.com/advisories/GHSA-98g6-xh36-x2p7",
+      "message": "El paquete \"Microsoft.Data.SqlClient\" 5.0.1 tiene una vulnerabilidad de gravedad alta conocida, https://github.com/advisories/GHSA-98g6-xh36-x2p7",
       "libraryId": "Microsoft.Data.SqlClient",
       "targetGraphs": [
         "net8.0"

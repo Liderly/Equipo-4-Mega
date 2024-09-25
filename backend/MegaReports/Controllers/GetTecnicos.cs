@@ -21,20 +21,20 @@ namespace MegaReports.Controllers
         [HttpGet("Tecnicos")]
         public IActionResult GetTecnicos()
         {
-            string query = "SELECT * FROM tecnico;";
+            string query = "SELECT * FROM Tecnicos;";
         
             var data = _databaseManager.ExecuteQuery(query);
 
             var DesData = new List<Dictionary<string, object>>();
 
-            foreach (DataRow row in data.Rows) //Deserializacion de los datos 
+            foreach (DataRow row in data.Rows) //Serializacion de los datos 
             {
-                var movie = new Dictionary<string, object>();
+                var tecnicos = new Dictionary<string, object>();
                 foreach (DataColumn column in data.Columns)
                 {
-                    movie.Add(column.ColumnName, row[column]);
+                    tecnicos.Add(column.ColumnName, row[column]);
                 }
-                DesData.Add(movie);
+                DesData.Add(tecnicos);
             }
             return Ok(DesData);
         }
