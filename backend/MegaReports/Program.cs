@@ -17,18 +17,18 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddTransient<DatabaseManager>(sp =>  //Servicio de database manager 
 {
-    var sqlServerConnection = sp.GetRequiredService<SqlServerConnection>();
+    var sqlServerConnection = sp.GetRequiredService<SqlServerConnections>();
     return new DatabaseManager(sqlServerConnection.getConnectionString());
 });
 
 builder.Services.AddScoped<storedProcedure>(sp =>
 {
-    var sqlServerConnection = sp.GetRequiredService<SqlServerConnection>();  // servicio de sp
+    var sqlServerConnection = sp.GetRequiredService<SqlServerConnections>();  // servicio de sp
     return new storedProcedure(sqlServerConnection.getConnectionString());
 });
 
 // Registrar SqlServerConnection como servicio.
-builder.Services.AddSingleton<MegaReports.data.SqlServerConnection>();
+builder.Services.AddSingleton<MegaReports.data.SqlServerConnections>();
 builder.Services.AddControllers();
 
 builder.Services.AddSwaggerGen(c =>

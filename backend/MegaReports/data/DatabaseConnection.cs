@@ -1,11 +1,11 @@
 using System.Data.SqlClient;
 namespace MegaReports.data
 {
-    public class SqlServerConnection
+    public class SqlServerConnections
     {
         private string _StringConnection = string.Empty;
 
-        public SqlServerConnection(IConfiguration configuration){ //constructor
+        public SqlServerConnections(IConfiguration configuration){ //constructor
             var connectionString = configuration.GetConnectionString("DefaultConnection");
             _StringConnection = connectionString + ";TrustServerCertificate=True"; // ignorar temas de certificacion ssl
         }
