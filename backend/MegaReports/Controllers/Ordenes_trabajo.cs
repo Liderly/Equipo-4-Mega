@@ -34,7 +34,13 @@ namespace MegaReports.Controllers
                                 S.Numero_exterior AS NumeroExteriorSuscriptor,
                                 S.Codigo_postal AS CodigoPostalSuscriptor,
                                 S.Colonia AS ColoniaSuscriptor,
-                                S.Telefono AS TelefonoSuscriptor
+                                S.Telefono AS TelefonoSuscriptor,
+								TE.Id AS IdTecnico,
+								TE.Nombres AS Nombres,
+								TE.Apellido_p AS ApellidoPTecnico,
+								TE.Apellido_m AS ApellidoMTecnico,
+								TE.Numero_empleado AS NumeroEmpleado,
+								TE.CuadrillaId AS CuadrillaIdTecnico
                             FROM Ordenes_trabajo OT
                             JOIN Tecnicos TE ON TE.CuadrillaId = OT.CuadrillaId
                             JOIN Trabajos T ON T.Id = OT.TrabajoId
