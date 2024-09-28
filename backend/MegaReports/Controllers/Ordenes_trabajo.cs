@@ -46,7 +46,7 @@ namespace MegaReports.Controllers
                             JOIN Trabajos T ON T.Id = OT.TrabajoId
                             JOIN Cuadrillas C ON C.Id = OT.CuadrillaId 
                             JOIN Suscriptores S ON S.Id = OT.SuscriptorId 
-                            WHERE TE.Id = @Id;";
+                            WHERE TE.Id = @Id AND OT.Estatus = 'Finalizado';";
                         
             var parameters = new[]
             {
