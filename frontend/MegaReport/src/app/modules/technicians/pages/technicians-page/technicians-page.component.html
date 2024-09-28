@@ -1,0 +1,40 @@
+<h5 class="fw-semibold">Técnicos</h5>
+
+<div class="mt-5 card-content">
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">N. de empleado</th>
+                    <th scope="col">Nombre(s)</th>
+                    <th scope="col">Apellido paterno</th>
+                    <th scope="col">Apellido materno</th>
+                    <th scope="col">Cuadrilla</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let technician of listTechnicians$">
+                    <th scope="row">{{technician.Id}}</th>
+                    <td>{{technician.Nombres}}</td>
+                    <td>{{technician.Apellido_p}}</td>
+                    <td>{{technician.Apellido_m}}</td>
+                    <td>{{technician.CuadrillaId}}</td>
+                    <td>
+                        <span class="actions-wrapper">
+                            <a [routerLink]="['/orders']" [queryParams]="{id:technician.Id}">
+                                <i class="bi bi-eye-fill"></i>
+                            </a>
+                            <a href="">
+                                <i class="bi bi-trash2-fill"></i>
+                            </a>
+                            <a href="">
+                                <i class="bi bi-pencil-square"></i>
+                            </a>
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

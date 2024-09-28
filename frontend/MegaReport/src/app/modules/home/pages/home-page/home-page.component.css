@@ -1,0 +1,11 @@
+#home-wrapper {
+    box-sizing: border-box;
+    height: 100%;
+    padding: 15px;
+}
+
+@media (min-width: 768px) {
+    #home-wrapper {
+        padding: 35px 35px 35px calc(35px + var(--menu-bar-size) + 35px);
+    }
+}

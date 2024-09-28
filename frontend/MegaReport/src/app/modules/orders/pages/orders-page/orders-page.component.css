@@ -1,0 +1,7 @@
+.row-wrapper {
+    height: calc(100% - 60px);
+}
+
+.row-wrapper .card-content {
+    height: 100%;
+}
