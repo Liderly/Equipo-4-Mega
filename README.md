@@ -1,30 +1,25 @@
 # Hackathon-mega
-## Descripción General
+## Instrucciones para implementar Kubernetes al proyecto
 
-Bienvenido al proyecto del Hackathon. Este repositorio contiene una estructura en que podrás trabajar tu reto con Angular para el frontend y .NET para la API backend. El proyecto está diseñado para ejecutarse localmente, proporcionando una experiencia completa de desarrollo tanto para el frontend como para el backend.
+#Requisitos
+-Docker
+-Kubernetes
+-Angular CLI: 18.0.6
+-Tener conexión a Internet
 
-## Estructura del Repositorio
+1. Entra a la ruta `.\backend\` y ejecuta este comando `docker build -t hackaton .`.
+2. Entra a la ruta `.\backend\kubernetes\` y ejecuta este comando `kubectl apply -f deployment.yaml`.
+3. En la misma ruta(`.\backend\kubernetes\`) ejecuta este comando `kubectl apply -f service.yaml`.
+4. Modifica el `appsettings.json` con las credenciales de tu Base de datos.
+> [!NOTE]
+  >  No modifiques el `Server=host.docker.internal;` ya que es para conectarte a tu base de datos local desde kubernetes.
+5. Modifica el `environment.ts` con la direccion que va a tener la API `http://localhost:30000/api`.
+6. Ejecuta el frontend(npm install, ng serve).
 
-```plaintext
-hackathon-proyecto/
-│
-├── frontend/                     # Código fuente del frontend (Angular)
-│   ├── src/                      # Componentes, servicios, y módulos de Angular
-│   ├── README.md                 # Instrucciones específicas del frontend
-│
-├── backend/                      # Código fuente del backend (API .NET)
-│   ├── src/                      # Controladores, modelos y servicios de la API
-│   ├── README.md                 # Instrucciones específicas del backend
-│
-├── docs/                         # Documentación adicional del proyecto
-│   ├── frontend-docs/            # Documentación específica del frontend
-│   ├── backend-docs/             # Documentación específica del backend
-│   └── architecture.md           # Descripción de la arquitectura del proyecto
-│
-├── docker-compose.yml            # Configuración para contenedores en local (opcional)
-├── .gitignore                    # Archivos y carpetas a ignorar por Git
-├── README.md                     # Documentación general del proyecto (este archivo)
-```
-**Este es un template que te puede servir como base, pero recuerda ser creativx en la forma en la que estructuras este repositorio**
 
+> **Ajusta los detalles**: Modifica las secciones según tus necesidades específicas o el entorno en el que estés trabajando.
+>
+> **Pruebas**: Asegúrate de probar los comandos y ejemplos incluidos en el `README.md` para confirmar que funcionan en tu entorno.
+
+ 
 Para más información respecto al evento puedes consultar el siguiente [Notion](https://puzzle-basement-211.notion.site/Hackathon-Semillero-de-talento-Mega-a2a776b0c9394b579341b28033e4f18b)
