@@ -24,6 +24,7 @@ body {
 }
 
 .card-content {
+    overflow: scroll;
     padding: 15px;
     background-color: var(--card-background);
     height: calc(100% - var(--menu-bar-size) - 45px);
@@ -32,6 +33,37 @@ body {
 
 table {
     --bs-table-color: var(--text-color) !important;
+}
+
+.fs-6 {
+    font-size: 15px !important;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 0px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    height: 0px;
+    background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: transparent;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: transparent;
+}
+
+.btn-primary {
+    background-color: var(--menu-bar-color);
+    border: none;
+    border-radius: 10px;
 }
 
 @media (min-width: 768px) {

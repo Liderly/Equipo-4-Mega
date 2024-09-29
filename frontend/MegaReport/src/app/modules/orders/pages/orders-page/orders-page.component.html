@@ -1,11 +1,110 @@
-<h5 class="fw-semibold">Técnicos / Mark Otto </h5>
+<h5 class="fw-semibold mb-5">Técnicos / {{ technicianInfo$[1] + ' ' + technicianInfo$[2] + ' ' +
+    technicianInfo$[3] }} </h5>
 
-<div class="mt-5 row row-wrapper">
-    <div class="col-3 card-content">
-        <p> Datos del empleado</p>
+<div class="row h-100">
+    <div class="col-12 col-lg-4 col-xl-3 d-none d-lg-block">
+        <div class="card-info" *ngIf="technicianInfo$.length > 0">
+            <div class="info-header">
+                <img src="../../../../../assets/user-icon.svg" alt="" srcset="">
+                <p class="mt-3 fw-medium mb-0 fs-6"> {{ technicianInfo$[1] + ' ' + technicianInfo$[2] + ' ' +
+                    technicianInfo$[3] }} </p>
+                <p class="mb-0"> {{ technicianInfo$[0] }} </p>
+            </div>
+            <div class="info-content mt-5">
+                <p class="fw-semibold fs-6">Información general</p>
+                <div class="div-info">
+                    <p class="fw-medium">Cuadrilla</p>
+                    <p></p>
+                    <p>{{ technicianInfo$[4] }}</p>
+                </div>
+            </div>
+            <div class="info-footer">
+                <p class="fw-semibold fs-6">Contactos de emergencia</p>
+                <p class="mb-0">No hay contactos de emergencia registrados.</p>
+            </div>
+
+            <div id="buttons-footer">
+                <button class="btn">
+                    <i class="bi bi-three-dots"></i>
+                </button>
+            </div>
+        </div>
     </div>
 
-    <div class="col-9 card-content">
-        <p>Ordenes de trabajo</p>
+    <div id="orders" class="col-12 col-lg-8 col-xl-9">
+
+        <div class="d-flex justify-content-between">
+            <p class="mb-3 fs-6 fw-semibold">Ordenes de trabajo</p>
+
+            <div>
+                <button class="btn btn-primary" (click)="generatePDF()">
+                    <i class="bi bi-filetype-pdf fs-3"></i>
+                </button>
+                <button class="btn btn-primary ms-3" (click)="generateExcel()">
+                    <i class="bi bi-filetype-xlsx fs-3"></i>
+                </button>
+            </div>
+        </div>
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-tab tab-completed active" id="completed-tab" data-bs-toggle="tab"
+                    data-bs-target="#completed-tab-pane" type="button" role="tab" aria-controls="completed-tab-pane"
+                    aria-selected="true">Finalizado <span class="badge text-bg-primary ms-2"> {{
+                        ordersCompleted$.length
+                        }} </span></button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-tab tab-process" id="process-tab" data-bs-toggle="tab"
+                    data-bs-target="#process-tab-pane" type="button" role="tab" aria-controls="process-tab-pane"
+                    aria-selected="false">Proceso <span class="badge text-bg-secondary ms-2"> {{
+                        ordersInProgress$.length
+                        }} </span></button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-tab tab-waiting" id="waiting-tab" data-bs-toggle="tab"
+                    data-bs-target="#waiting-tab-pane" type="button" role="tab" aria-controls="waiting-tab-pane"
+                    aria-selected="false">Espera <span class="badge text-bg-third ms-2"> {{
+                        ordersPending$.length
+                        }} </span></button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-tab tab-cancelled" id="canceled" data-bs-toggle="tab" data-bs-target="#canceled-pane"
+                    type="button" role="tab" aria-controls="canceled-pane" aria-selected="false">Cancelado <span
+                        class="badge text-bg-fourth ms-2"> {{
+                        ordersCanceled$.length
+                        }} </span> </button>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabs">
+            <div class="tab-pane fade show active" id="completed-tab-pane" role="tabpanel"
+                aria-labelledby="completed-tab" tabindex="0">
+                <div class="row mt-2 mt-md-4">
+                    <div class="col-12 col-md-6 col-xl-4 mb-3" *ngFor="let order of ordersCompleted$">
+                        <div class="div-order">
+                            <div class="d-flex justify-content-between">
+                                <p class="fw-semibold">Orden #{{ order.IdOrdenTrabajo }}</p>
+                                <p class="fw-semibold">{{ order.TiempoRegistroOrdenTrabajo | date:'shortDate' }}</p>
+                            </div>
+                            <p class="fw-medium mb-0"> {{ order.NombreTrabajo }}</p>
+                            <p>{{ order.DescripcionTrabajo }}</p>
+                            <p class="fw-medium mb-0">Datos del suscriptor</p>
+                            <p> {{ order.NombresSuscriptior + ' ' + order.ApellidoPSuscriptior + ' ' +
+                                order.ApellidoMSuscriptior }} </p>
+
+                            <div class="d-flex justify-content-between">
+                                <p class="fw-medium mb-0"> Puntos </p>
+                                <p class="mb-0"> Puntos </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="process-tab-pane" role="tabpanel" aria-labelledby="process-tab" tabindex="0">
+                2</div>
+            <div class="tab-pane fade" id="waiting-tab-pane" role="tabpanel" aria-labelledby="waiting-tab" tabindex="0">
+                3</div>
+            <div class="tab-pane fade" id="canceled-pane" role="tabpanel" aria-labelledby="canceled" tabindex="0">4
+            </div>
+        </div>
     </div>
 </div>
