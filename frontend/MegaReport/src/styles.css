@@ -66,6 +66,13 @@ table {
     border-radius: 10px;
 }
 
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: var(--menu-bar-color) !important;
+    border: none;
+    border-radius: 10px;
+}
+
 @media (min-width: 768px) {
     .card-content {
         height: calc(100% - 60px);

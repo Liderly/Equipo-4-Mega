@@ -3,3 +3,12 @@
     justify-content: space-evenly;
     width: 100%;
 }
+
+.view-menu {
+    color: #F08700 !important;
+}
+
+.modal-content {
+    background-color: var(--card-background);
+    border-color: transparent;
+}

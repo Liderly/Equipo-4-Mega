@@ -1,7 +1,14 @@
 <h5 class="fw-semibold">Técnicos</h5>
 
 <div class="mt-5 card-content">
-    <div class="table-responsive">
+    <div class="d-flex justify-content-end">
+        <button class="btn btn-primary d-flex">
+            <i class="bi bi-plus-lg"></i>
+            <p class="mb-0 ms-3">Agregar técnico</p>
+        </button>
+    </div>
+
+    <div class="table-responsive mt-4">
         <table class="table">
             <thead>
                 <tr>
@@ -22,15 +29,37 @@
                     <td>{{technician.CuadrillaId}}</td>
                     <td>
                         <span class="actions-wrapper">
-                            <a [routerLink]="['/orders']" [queryParams]="{id:technician.Id}">
+                            <a [routerLink]="['/orders']" [queryParams]="{id:technician.Id}" class="view-menu">
                                 <i class="bi bi-eye-fill"></i>
                             </a>
-                            <a href="">
-                                <i class="bi bi-trash2-fill"></i>
-                            </a>
-                            <a href="">
+                            <button type="button" class="btn p-0" data-bs-toggle="modal"
+                                [attr.data-bs-target]="'#exampleModal' + technician.Id">
                                 <i class="bi bi-pencil-square"></i>
-                            </a>
+                            </button>
+
+                            <div class="modal fade" [id]="'exampleModal' + technician.Id" tabindex="-1"
+                                aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" [id]="'exampleModalLabel' + technician.Id">
+                                                Modal title for Technician {{ technician.Id }}</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <!-- Aquí puedes colocar los detalles que quieras mostrar -->
+                                            Details about Technician {{ technician.Id }} go here...
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </span>
                     </td>
                 </tr>

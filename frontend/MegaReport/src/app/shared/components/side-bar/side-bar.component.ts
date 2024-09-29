@@ -18,7 +18,7 @@ export class SideBarComponent implements OnInit {
       {
         name: 'Cuadrillas',
         icon: 'bi bi-people-fill',
-        router: ['']
+        router: ['/work-crews']
       },
       {
         name: 'Ajustes',

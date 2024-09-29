@@ -1,0 +1,24 @@
+<h5 class="fw-semibold">Cuadrillas</h5>
+
+<div class="mt-5 card-content">
+    <div class="table-responsive mt-4">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nombre de la cuadrilla</th>
+                    <th scope="col"> Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let workCrew of listWorkCrews$">
+                    <th scope="row">{{workCrew.Id}}</th>
+                    <td>{{workCrew.Nombre}}</td>
+                    <td>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

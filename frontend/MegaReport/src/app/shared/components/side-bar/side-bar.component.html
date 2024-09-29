@@ -5,9 +5,11 @@
         </a>
     </div>
     <div class="nav-items-wrapper">
-        <div [routerLink]="item.router" *ngFor="let item of mainMenu" class="nav-item">
-            <i class="{{ item.icon }} h3 mb-0"></i>
-            <span>{{ item.name }}</span>
+        <div *ngFor="let item of mainMenu">
+            <a [routerLink]="item.router" class="nav-item">
+                <i class="{{ item.icon }} h3 mb-0"></i>
+                <span>{{ item.name }}</span>
+            </a>
         </div>
     </div>
 </div>

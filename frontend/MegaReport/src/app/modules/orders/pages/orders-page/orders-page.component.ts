@@ -12,7 +12,7 @@ import * as XLSX from 'xlsx';
 })
 export class OrdersPageComponent implements OnInit, OnDestroy{
   id:number = 0;
-  /* listOrders$: Array<any> = []; */
+  totalAmount$: Array<any> = [];
   technicianInfo$: Array<any> = [];
   ordersInProgress$: any[] = [];
   ordersCompleted$: any[] = [];
@@ -44,7 +44,11 @@ export class OrdersPageComponent implements OnInit, OnDestroy{
       }
     });
 
-    
+    this.orderService.getTotalAmount$(this.id).subscribe(resp => {
+      this.totalAmount$ = resp
+    });
+
+    console.log("hola" + this.totalAmount$);
   }
 
   generatePDF() {
@@ -119,13 +123,10 @@ export class OrdersPageComponent implements OnInit, OnDestroy{
   }  
 
   generateExcel() {
-    // Suponiendo que tienes un array de órdenes llamado orders
-    const orders = this.ordersCompleted$; // Filtrar órdenes completadas
+    const orders = this.ordersCompleted$;
   
-    // Crea un nuevo libro de trabajo
     const workbook = XLSX.utils.book_new();
   
-    // Convierte los datos a formato de hoja de trabajo
     const worksheet = XLSX.utils.json_to_sheet(orders.map(order => ({
       'N. orden de trabajo': order.IdOrdenTrabajo,
       'Trabajo': order.NombreTrabajo,
@@ -137,14 +138,11 @@ export class OrdersPageComponent implements OnInit, OnDestroy{
     
     })));
   
-    // Agrega la hoja de trabajo al libro
     XLSX.utils.book_append_sheet(workbook, worksheet, 'Órdenes Completadas');
   
-    // Genera el archivo y lo descarga
     XLSX.writeFile(workbook, 'ordenes_completadas.xlsx');
   }
   
-
   ngOnDestroy(): void {
     
   }

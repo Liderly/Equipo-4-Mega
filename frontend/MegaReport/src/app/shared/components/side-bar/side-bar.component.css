@@ -7,6 +7,7 @@
     bottom: 15px;
     left: 15px;
     border-radius: 25px;
+    z-index: 2;
 }
 
 .nav-img {
@@ -16,6 +17,7 @@
 .nav-items-wrapper {
     display: flex;
     justify-content: space-evenly;
+    align-items: center;
     height: 100%;
 }
 
@@ -25,13 +27,15 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    text-decoration: none;
+    color: var(--text-menu-bar);
 }
 
 .nav-item span {
     font-size: 12px !important;
 }
 
-.nav-item:last-child {
+.nav-items-wrapper div:last-child {
     display: none;
 }
 
@@ -54,8 +58,8 @@
         margin-bottom: 25px;
     }
 
-    .nav-item:last-child {
+    .nav-items-wrapper div:last-child {
         margin-top: auto;
-        display: flex;
+        display: block;
     }
 }
