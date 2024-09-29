@@ -26,6 +26,7 @@ namespace MegaReports.Controllers
                                 OT.Estatus AS EstatusOrdenTrabajo,
                                 T.Nombre AS NombreTrabajo,
                                 T.Descripcion AS DescripcionTrabajo,
+                                T.Puntos_bono AS PuntosBonoTrabajo,                              
                                 C.Nombre AS NombreCuadrilla,  
                                 S.Nombres AS NombresSuscriptior,
                                 S.Apellido_p AS ApellidoPSuscriptior,
