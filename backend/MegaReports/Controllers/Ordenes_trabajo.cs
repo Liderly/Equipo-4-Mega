@@ -48,8 +48,8 @@ namespace MegaReports.Controllers
                             JOIN Suscriptores S ON S.Id = OT.SuscriptorId 
                             WHERE TE.Id = @Id
                             AND OT.Estatus = 'Finalizado'
-                            AND OT.Tiempo_registro >= DATEADD(WEEK, DATEDIFF(WEEK, 0, GETDATE()), 0)
-                            AND OT.Tiempo_registro < DATEADD(WEEK, DATEDIFF(WEEK, 0, GETDATE()) + 1, 0);";
+                            AND OT.Tiempo_finalizado >= DATEADD(WEEK, DATEDIFF(WEEK, 0, GETDATE()), 0)
+                            AND OT.Tiempo_finalizado < DATEADD(WEEK, DATEDIFF(WEEK, 0, GETDATE()) + 1, 0);";
             var parameters = new[]
             {
                 new SqlParameter("@Id", id)
