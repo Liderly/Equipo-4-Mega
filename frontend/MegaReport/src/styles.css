@@ -73,6 +73,12 @@ table {
     border-radius: 10px;
 }
 
+
+.form-label {
+    margin-bottom: 0.625rem;
+    font-size: 12px;
+}
+
 @media (min-width: 768px) {
     .card-content {
         height: calc(100% - 60px);

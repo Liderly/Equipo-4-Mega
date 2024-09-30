@@ -28,7 +28,7 @@ export class SideBarComponent implements OnInit {
       {
         name: 'Salir',
         icon: 'bi bi-box-arrow-in-left',
-        router: ['']
+        router: ['/auth']
       }
     ]
   }
