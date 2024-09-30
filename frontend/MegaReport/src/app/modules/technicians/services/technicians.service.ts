@@ -14,4 +14,16 @@ export class TechniciansService {
   getTechnicians$(): Observable<any>{
     return this.http.get(`${this.URL}/Tecnicos`)
   }
+
+  setTechnicians$(Numero_empleado: string, Nombre: string, Apellido_p: string, Apellido_m: string, CuadrillaId:string): Observable<any>{
+    const body = {
+      Numero_empleado,
+      Nombre,
+      Apellido_p,
+      Apellido_m,
+      CuadrillaId,
+    }
+    window.location.reload();
+    return this.http.post(`${this.URL}/Tecnicos`, body)
+  }
 }

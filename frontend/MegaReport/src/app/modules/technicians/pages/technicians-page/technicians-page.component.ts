@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
 import { TechniciansService } from '../../services/technicians.service';
 
 @Component({
@@ -17,7 +16,6 @@ export class TechniciansPageComponent implements OnInit, OnDestroy{
     this.techniciansService.getTechnicians$()
     .subscribe(resp => {
       this.listTechnicians$ = resp
-      console.log(this.listTechnicians$)
     })
   }
 
@@ -27,6 +25,12 @@ export class TechniciansPageComponent implements OnInit, OnDestroy{
 
   searchTechnician(search:string){
     this.textSearch = search;
-    
+  }
+
+  addTechnician(nombres:string, apellidoPaterno:string, apellidoMaterno:string, cuadrilla: string, numeroEmpleado:string){
+    this.techniciansService.setTechnicians$(numeroEmpleado,nombres,apellidoPaterno,apellidoMaterno,cuadrilla)
+    .subscribe(resp => {
+      console.log(resp)
+    })
   }
 }
