@@ -35,19 +35,21 @@ namespace MegaReports.Controllers
                                 S.Codigo_postal AS CodigoPostalSuscriptor,
                                 S.Colonia AS ColoniaSuscriptor,
                                 S.Telefono AS TelefonoSuscriptor,
-								TE.Id AS IdTecnico,
-								TE.Nombres AS Nombres,
-								TE.Apellido_p AS ApellidoPTecnico,
-								TE.Apellido_m AS ApellidoMTecnico,
-								TE.Numero_empleado AS NumeroEmpleado,
-								TE.CuadrillaId AS CuadrillaIdTecnico
+                                TE.Id AS IdTecnico,
+                                TE.Nombres AS Nombres,
+                                TE.Apellido_p AS ApellidoPTecnico,
+                                TE.Apellido_m AS ApellidoMTecnico,
+                                TE.Numero_empleado AS NumeroEmpleado,
+                                TE.CuadrillaId AS CuadrillaIdTecnico
                             FROM Ordenes_trabajo OT
                             JOIN Tecnicos TE ON TE.CuadrillaId = OT.CuadrillaId
                             JOIN Trabajos T ON T.Id = OT.TrabajoId
                             JOIN Cuadrillas C ON C.Id = OT.CuadrillaId 
                             JOIN Suscriptores S ON S.Id = OT.SuscriptorId 
-                            WHERE TE.Id = @Id AND OT.Estatus = 'Finalizado';";
-                        
+                            WHERE TE.Id = @Id
+                            AND OT.Estatus = 'Finalizado'
+                            AND OT.Tiempo_registro >= DATEADD(WEEK, DATEDIFF(WEEK, 0, GETDATE()), 0)
+                            AND OT.Tiempo_registro < DATEADD(WEEK, DATEDIFF(WEEK, 0, GETDATE()) + 1, 0);";
             var parameters = new[]
             {
                 new SqlParameter("@Id", id)

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MegaReports")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+60e3638e90e74bb465a7a92ea5f2a5c580714461")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8b697c913d16ffb10eb663ac87eae2b92b9fab22")]
 [assembly: System.Reflection.AssemblyProductAttribute("MegaReports")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MegaReports")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
