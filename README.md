@@ -23,7 +23,7 @@ Este es un diagrama de como sería la base de datos
 ![Descripción de la imagen](./imgs/db.png)
 
 Este es el diagrama entidad relacion
-![Descripción de la imagen](./imgs/db.png)
+![Descripción de la imagen](./imgs/er.jpeg)
 
 Estas son las quieries necesarias para crear la base de datos y sus tablas:
 
@@ -317,3 +317,67 @@ INSERT INTO Ordenes_trabajo (Tiempo_registro, Tiempo_finalizado, Estatus, Cuadri
 ('2024-10-01T15:30:00', NULL, 'Cancelado', 9, 1, 1),
 ('2024-10-01T16:45:00', NULL, 'En progreso', 10, 2, 2);
 ```
+
+Para hacer el cálculo de todos los técnicos y asignar a su campo de "bono_semana_actual", se utiliza el siguiente procedimiento almacenado. Este está pensado para ejecutarse cada semana con una tarea programada en la base de datos.
+
+```
+CREATE PROCEDURE ActualizarBonoSemana
+AS
+BEGIN
+    DECLARE @TecnicoId INT;
+    DECLARE @Puntos INT;
+    DECLARE @Monto DECIMAL(19, 4);
+
+    -- Create a temporary table to hold results
+    CREATE TABLE #ResultadosTecnicos (
+        TecnicoId INT,
+        Puntos INT,
+        Monto DECIMAL(19, 4)
+    );
+
+    -- Cursor to iterate over each technician
+    DECLARE TecnicoCursor CURSOR FOR
+    SELECT Id FROM Tecnicos;
+
+    OPEN TecnicoCursor;
+    FETCH NEXT FROM TecnicoCursor INTO @TecnicoId;
+
+    WHILE @@FETCH_STATUS = 0
+    BEGIN
+
+		PRINT('ESTOY EN ID ' + str(@TecnicoId))
+
+        -- Obtain total points for the technician
+        EXEC ObtenerPuntosTecnicoPorSemanaAutomatica @TecnicoId, @Puntos OUTPUT;
+
+		PRINT('Puntos ' + str(@Puntos))
+
+        -- Calculate amount based on the points
+        EXEC ObtenerMontoPorPuntos @Puntos, @Monto OUTPUT;
+
+		PRINT('Monto correspondiente ' + str(@Monto))
+
+        -- Insert the results into the temporary table
+        INSERT INTO #ResultadosTecnicos (TecnicoId, Puntos, Monto)
+        VALUES (@TecnicoId, @Puntos, @Monto);
+
+        -- Fetch the next technician
+        FETCH NEXT FROM TecnicoCursor INTO @TecnicoId;
+    END;
+
+    CLOSE TecnicoCursor;
+    DEALLOCATE TecnicoCursor;
+
+    -- Update the Bono_Semana_actual column for all technicians
+    UPDATE TE
+    SET TE.Bono_semana_actual = RT.Monto
+    FROM Tecnicos TE
+    JOIN #ResultadosTecnicos RT ON TE.Id = RT.TecnicoId;
+
+    -- Drop the temporary table after use
+    DROP TABLE #ResultadosTecnicos;
+END;
+GO
+```
+
+Lo malo de este procedimiento es que utiliza un cursor.
