@@ -4,11 +4,13 @@ import { CommonModule } from '@angular/common';
 import { TechniciansRoutingModule } from './technicians-routing.module';
 import { TechniciansPageComponent } from './pages/technicians-page/technicians-page.component';
 import { RouterModule } from '@angular/router';
+import { SearchPipe } from './pipes/search.pipe';
 
 
 @NgModule({
   declarations: [
-    TechniciansPageComponent
+    TechniciansPageComponent,
+    SearchPipe
   ],
   imports: [
     CommonModule,

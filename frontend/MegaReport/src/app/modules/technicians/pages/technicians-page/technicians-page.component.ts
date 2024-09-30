@@ -9,6 +9,7 @@ import { TechniciansService } from '../../services/technicians.service';
 })
 export class TechniciansPageComponent implements OnInit, OnDestroy{
   listTechnicians$: Array<any> = [];
+  public textSearch: string = '';
 
   constructor(private techniciansService: TechniciansService){}
 
@@ -21,5 +22,10 @@ export class TechniciansPageComponent implements OnInit, OnDestroy{
 
   ngOnDestroy(): void {
 
+  }
+
+  searchTechnician(search:string){
+    this.textSearch = search;
+    
   }
 }
