@@ -79,6 +79,11 @@ table {
     font-size: 12px;
 }
 
+
+.btn-secondary {
+    border-radius: 10px;
+}
+
 @media (min-width: 768px) {
     .card-content {
         height: calc(100% - 60px);

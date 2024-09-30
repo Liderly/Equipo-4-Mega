@@ -17,6 +17,7 @@ export class TechniciansPageComponent implements OnInit, OnDestroy{
     this.techniciansService.getTechnicians$()
     .subscribe(resp => {
       this.listTechnicians$ = resp
+      console.log(this.listTechnicians$)
     })
   }
 

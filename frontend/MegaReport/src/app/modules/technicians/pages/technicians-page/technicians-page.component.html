@@ -3,7 +3,8 @@
 <div class="mt-5 card-content">
     <div class="d-flex gap-5">
         <div class="input-group justify-content-start w-50">
-            <input type="text" class="form-control" placeholder="Numero de empleado" #txtSearch (keyup)="searchTechnician(txtSearch.value)">
+            <input type="text" class="form-control" placeholder="Numero de empleado" #txtSearch
+                (keyup)="searchTechnician(txtSearch.value)">
             <span class="input-group-text">
                 <i class="bi bi-search"></i>
             </span>
@@ -50,19 +51,71 @@
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h1 class="modal-title fs-5" [id]="'exampleModalLabel' + technician.Id">
-                                                Modal title for Technician {{ technician.Id }}</h1>
+                                            <p class="modal-title fw-semibold"
+                                                [id]="'exampleModalLabel' + technician.Id">
+                                                Editar información de técnico </p>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <!-- Aquí puedes colocar los detalles que quieras mostrar -->
-                                            Details about Technician {{ technician.Id }} go here...
+                                            <div class="row">
+                                                <div class="col-12 col-sm-6 col-md-4 mb-3">
+                                                    <label for="numeroEmpleado" class="form-label fw-medium">Número de
+                                                        empleado</label>
+                                                    <input type="number" class="form-control" id="numeroEmpleado"
+                                                        name="numeroEmpleado" [(ngModel)]="technician.Numero_empleado"
+                                                        disabled>
+                                                </div>
+
+                                                <div class="col-0 col-sm-12"></div>
+
+                                                <div class="col-12 col-sm-6 mb-3">
+                                                    <label for="nombres" class="form-label fw-medium">Nombre(s)</label>
+                                                    <input type="string" class="form-control" id="nombres"
+                                                        name="nombres" [(ngModel)]="technician.Nombres">
+                                                </div>
+
+                                                <div class="col-12 col-sm-6 mb-3">
+                                                    <label for="apellidoPaterno" class="form-label fw-medium">Apellido
+                                                        paterno</label>
+                                                    <input type="string" class="form-control" id="apellidoPaterno"
+                                                        name="apellidoPaterno" [(ngModel)]="technician.Apellido_p">
+                                                </div>
+
+                                                <div class="col-12 col-sm-6 mb-3">
+                                                    <label for="apellidoMaterno" class="form-label fw-medium">Apellido
+                                                        materno</label>
+                                                    <input type="string" class="form-control" id="apellidoMaterno"
+                                                        name="apellidoMaterno" [(ngModel)]="technician.Apellido_m">
+                                                </div>
+
+                                                <div class="col-0 col-sm-12"></div>
+
+                                                <div class="col-12 mb-3">
+                                                    <label for="apellidoMaterno"
+                                                        class="form-label fw-medium">Cuadrilla</label>
+                                                    <select class="form-select" name="cuadrilla"
+                                                        [(ngModel)]="technician.CuadrillaId">
+                                                        <option [ngValue]="null" disabled>Selecciona una cuadrilla...
+                                                        </option>
+                                                        <option [ngValue]="1">Cuadrilla 1</option>
+                                                        <option [ngValue]="2">Cuadrilla 2</option>
+                                                        <option [ngValue]="3">Cuadrilla 3</option>
+                                                        <option [ngValue]="4">Cuadrilla 4</option>
+                                                        <option [ngValue]="5">Cuadrilla 5</option>
+                                                        <option [ngValue]="6">Cuadrilla 6</option>
+                                                        <option [ngValue]="7">Cuadrilla 7</option>
+                                                        <option [ngValue]="8">Cuadrilla 8</option>
+                                                        <option [ngValue]="9">Cuadrilla 9</option>
+                                                        <option [ngValue]="10">Cuadrilla 10</option>
+                                                    </select>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
-                                                data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                                data-bs-dismiss="modal">Cancelar</button>
+                                            <button type="button" class="btn btn-primary">Guardar cambios</button>
                                         </div>
                                     </div>
                                 </div>
