@@ -5,6 +5,12 @@
     display: flex;
     justify-content: end;
     margin: 15px;
+    z-index: 3;
+}
+
+.dropdown-menu {
+    background-color: var(--card-background);
+    border: none;
 }
 
 .btn-user,

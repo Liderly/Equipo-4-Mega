@@ -1,0 +1,40 @@
+#login {
+    padding: 25px 15px 25px 0px;
+}
+
+.form-control,
+.form-select {
+    background-color: var(--card-background) !important;
+    border-color: var(--card-background);
+    border-radius: 10px;
+    padding: 6px 15px;
+}
+
+.form-control:focus {
+    color: var(--text-color);
+    border-color: var(--text-color);
+    box-shadow: none;
+}
+
+#login-image {
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+
+    background-image:
+        linear-gradient(to bottom, rgba(22, 44, 67, 0.35), rgba(22, 44, 67, 0.35)),
+        url('../../../../../assets/background-login.jpeg');
+    background-position: center;
+    background-size: cover;
+    border-radius: 25px;
+
+    position: relative;
+}
+
+#login-image img {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 25px;
+    width: 150px;
+}

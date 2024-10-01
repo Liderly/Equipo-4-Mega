@@ -47,8 +47,6 @@ export class OrdersPageComponent implements OnInit, OnDestroy{
     this.orderService.getTotalAmount$(this.id).subscribe(resp => {
       this.totalAmount$ = resp
     });
-
-    console.log("hola" + this.totalAmount$);
   }
 
   generatePDF() {
@@ -60,7 +58,7 @@ export class OrdersPageComponent implements OnInit, OnDestroy{
       { header: 'Descripción', dataKey: 'DescripcionTrabajo' },
       { header: 'Inicio', dataKey: 'FechaInicio' },
       { header: 'Fin', dataKey: 'FechaFin' },
-      { header: 'Puntos', dataKey: 'Nombres' }
+      { header: 'Puntos', dataKey: 'Puntos' }
     ];
 
     const nombreTecnico = `${this.ordersCompleted$[0]?.Nombres} ${this.ordersCompleted$[0]?.ApellidoPTecnico} ${this.ordersCompleted$[0]?.ApellidoMTecnico}`;
@@ -79,7 +77,7 @@ export class OrdersPageComponent implements OnInit, OnDestroy{
             month: '2-digit',
             day: '2-digit'
           }) : 'N/A',
-      Nombres: `${order.Nombres} ${order.ApellidoPTecnico} ${order.ApellidoMTecnico}`
+      Puntos: `${order.PuntosBonoTrabajo}`
     }));
   
     doc.setFontSize(14);
@@ -116,13 +114,87 @@ export class OrdersPageComponent implements OnInit, OnDestroy{
         3: { halign: 'center', valign: 'middle' },  
         4: { halign: 'center', valign: 'middle' },  
         5: { halign: 'center', valign: 'middle' }, 
+      },
+      
+      didDrawCell: (data:any) => {
+        if (data.row.index === rows.length - 1 && data.column.index === 0) {
+          const currentFont = doc.getFont().fontName;
+          const montoText = 'Monto a pagar: ' + this.totalAmount$ + ' pesos';
+          doc.setFontSize(12);
+          doc.setFont(currentFont, 'bold');
+          doc.text(montoText, data.cell.x + 0, data.cell.y + data.cell.height + 10);
+        }
       }
     });
   
-    doc.save('ordenes-completadas.pdf');
+    doc.save(`${this.ordersCompleted$[0]?.Nombres}${this.ordersCompleted$[0]?.ApellidoPTecnico}${this.ordersCompleted$[0]?.ApellidoMTecnico}`);
   }  
 
   generateExcel() {
+    const orders = this.ordersCompleted$;
+
+    const workbook = XLSX.utils.book_new();
+
+    // Definimos el tipo de worksheetData como un arreglo de objetos
+    const worksheetData: Array<{ [key: string]: any }> = orders.map(order => ({
+        'N. orden de trabajo': order.IdOrdenTrabajo,
+        'Trabajo': order.NombreTrabajo,
+        'Descripción': order.DescripcionTrabajo,
+        'Inicio': new Date(order.TiempoRegistroOrdenTrabajo).toLocaleDateString('es-ES'), // Fecha corta
+        'Fin': order.TiempoFinalizadoOrdenTrabajo ? 
+            new Date(order.TiempoFinalizadoOrdenTrabajo).toLocaleDateString('es-ES') : 'N/A', // Fecha corta
+        'Puntos': order.PuntosBonoTrabajo
+    }));
+
+    const totalAmount = this.totalAmount$;
+
+    worksheetData.push({
+        'N. orden de trabajo': '',
+        'Trabajo': '',
+        'Descripción': '',
+        'Inicio': '',
+        'Fin': '',
+        'Puntos': ''
+    });
+
+    worksheetData.push({
+      'N. orden de trabajo': '',
+      'Trabajo': '',
+      'Descripción': '',
+      'Inicio': '',
+      'Fin': '',
+      'Puntos': ''
+    });
+  
+    worksheetData.push({
+      'N. orden de trabajo': '',
+      'Trabajo': '',
+      'Descripción': '',
+      'Inicio': '',
+      'Fin': '',
+      'Puntos': ''
+      });
+
+      worksheetData.push({
+        'N. orden de trabajo': '',
+        'Trabajo': '',
+        'Descripción': '',
+        'Inicio': '',
+        'Fin': '',
+        'Puntos': `Monto a pagar: ${totalAmount} pesos`
+    });
+
+    const worksheet = XLSX.utils.json_to_sheet(worksheetData);
+
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'Órdenes Completadas');
+
+    // Nombre del archivo para guardar
+    const fileName = `${this.ordersCompleted$[0]?.Nombres}${this.ordersCompleted$[0]?.ApellidoPTecnico}${this.ordersCompleted$[0]?.ApellidoMTecnico}.xlsx`;
+    XLSX.writeFile(workbook, fileName);
+}
+
+
+  /* generateExcel() {
     const orders = this.ordersCompleted$;
   
     const workbook = XLSX.utils.book_new();
@@ -134,14 +206,16 @@ export class OrdersPageComponent implements OnInit, OnDestroy{
       'Inicio': new Date(order.TiempoRegistroOrdenTrabajo).toLocaleDateString('es-ES'), // Fecha corta
       'Fin': order.TiempoFinalizadoOrdenTrabajo ? 
       new Date(order.TiempoFinalizadoOrdenTrabajo).toLocaleDateString('es-ES') : 'N/A', // Fecha corta
-      'Puntos': order.EstatusOrdenTrabajo,
-    
+      'Puntos': order.PuntosBonoTrabajo,
     })));
+
+    worksheet.push();
+    
   
     XLSX.utils.book_append_sheet(workbook, worksheet, 'Órdenes Completadas');
   
-    XLSX.writeFile(workbook, 'ordenes_completadas.xlsx');
-  }
+    XLSX.writeFile(workbook, `${this.ordersCompleted$[0]?.Nombres}${this.ordersCompleted$[0]?.ApellidoPTecnico}${this.ordersCompleted$[0]?.ApellidoMTecnico}.xlsx`);
+  } */
   
   ngOnDestroy(): void {
     

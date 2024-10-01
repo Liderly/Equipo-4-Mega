@@ -16,6 +16,6 @@ export class OrdersService {
   }
 
   getTotalAmount$(id:number): Observable<any>{
-    return this.http.get(`${this.URL}/MontoxTecnico?TecnicoId${id}`)
+    return this.http.get(`${this.URL}/MontoxTecnico?TecnicoId=${id}`)
   }
 }

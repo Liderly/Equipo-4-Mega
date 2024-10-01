@@ -4,16 +4,20 @@ import { CommonModule } from '@angular/common';
 import { TechniciansRoutingModule } from './technicians-routing.module';
 import { TechniciansPageComponent } from './pages/technicians-page/technicians-page.component';
 import { RouterModule } from '@angular/router';
+import { SearchPipe } from './pipes/search.pipe';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
-    TechniciansPageComponent
+    TechniciansPageComponent,
+    SearchPipe
   ],
   imports: [
     CommonModule,
     TechniciansRoutingModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ]
 })
 export class TechniciansModule { }

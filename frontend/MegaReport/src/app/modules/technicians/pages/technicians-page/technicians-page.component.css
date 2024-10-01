@@ -11,4 +11,5 @@
 .modal-content {
     background-color: var(--card-background);
     border-color: transparent;
+    border-radius: 15px;
 }
