@@ -49,9 +49,9 @@ namespace MegaReports.Controllers
                             JOIN Cuadrillas C ON C.Id = OT.CuadrillaId 
                             JOIN Suscriptores S ON S.Id = OT.SuscriptorId 
                             WHERE TE.Id = @Id
-                                AND OT.Estatus = 'Finalizado'
-                                AND OT.Tiempo_finalizado >= DATEADD(DAY, 1 - DATEPART(WEEKDAY, GETDATE()), CAST(GETDATE() AS DATE))
-                                AND OT.Tiempo_finalizado <  DATEADD(DAY, 8 - DATEPART(WEEKDAY, GETDATE()), CAST(GETDATE() AS DATE));";
+                                AND (OT.Tiempo_finalizado IS NULL
+                                    OR (OT.Tiempo_finalizado >= DATEADD(DAY, 1 - DATEPART(WEEKDAY, GETDATE()), CAST(GETDATE() AS DATE))
+                                        AND OT.Tiempo_finalizado < DATEADD(DAY, 8 - DATEPART(WEEKDAY, GETDATE()), CAST(GETDATE() AS DATE))));";
             var parameters = new[]
             {
                 new SqlParameter("@Id", id)
