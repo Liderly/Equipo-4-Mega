@@ -34,21 +34,18 @@
                                 <div class="col-12 col-sm-6 mb-3">
                                     <label for="apellidoPaterno" class="form-label fw-medium">Apellido
                                         paterno</label>
-                                    <input type="string" class="form-control" #apellidoPaterno
-                                        name="apellidoPaterno">
+                                    <input type="string" class="form-control" #apellidoPaterno name="apellidoPaterno">
                                 </div>
 
                                 <div class="col-12 col-sm-6 mb-3">
                                     <label for="apellidoMaterno" class="form-label fw-medium">Apellido
                                         materno</label>
-                                    <input type="string" class="form-control" #apellidoMaterno
-                                        name="apellidoMaterno">
+                                    <input type="string" class="form-control" #apellidoMaterno name="apellidoMaterno">
                                 </div>
 
                                 <div class="col-12 col-sm-6 mb-3">
                                     <label for="apellidoMaterno" class="form-label fw-medium">Numero de empleado</label>
-                                    <input type="string" class="form-control" #numeroEmpleado
-                                        name="apellidoMaterno">
+                                    <input type="string" class="form-control" #numeroEmpleado name="apellidoMaterno">
                                 </div>
 
                                 <div class="col-0 col-sm-12"></div>
@@ -74,7 +71,8 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn btn-primary" (click)="addTechnician(nombres.value, apellidoPaterno.value, apellidoMaterno.value, cuadrilla.value, numeroEmpleado.value)">Agregar</button>
+                            <button type="button" class="btn btn-primary"
+                                (click)="addTechnician(nombres.value, apellidoPaterno.value, apellidoMaterno.value, cuadrilla.value, numeroEmpleado.value)">Agregar</button>
                         </div>
                     </div>
                 </div>
@@ -144,14 +142,16 @@
                                                     <label for="apellidoPaterno" class="form-label fw-medium">Apellido
                                                         paterno</label>
                                                     <input type="string" class="form-control" id="apellidoPaterno"
-                                                        name="apellidoPaterno" [(ngModel)]="technician.Apellido_p" #apellidoPaternoEdit>
+                                                        name="apellidoPaterno" [(ngModel)]="technician.Apellido_p"
+                                                        #apellidoPaternoEdit>
                                                 </div>
 
                                                 <div class="col-12 col-sm-6 mb-3">
                                                     <label for="apellidoMaterno" class="form-label fw-medium">Apellido
                                                         materno</label>
                                                     <input type="string" class="form-control" id="apellidoMaterno"
-                                                        name="apellidoMaterno" [(ngModel)]="technician.Apellido_m" #apellidoMaternoEdit>
+                                                        name="apellidoMaterno" [(ngModel)]="technician.Apellido_m"
+                                                        #apellidoMaternoEdit>
                                                 </div>
 
                                                 <div class="col-0 col-sm-12"></div>
@@ -163,16 +163,16 @@
                                                         [(ngModel)]="technician.CuadrillaId" #cuadrillaEdit>
                                                         <option [ngValue]="null" disabled>Selecciona una cuadrilla...
                                                         </option>
-                                                        <option >1</option>
-                                                        <option >2</option>
-                                                        <option >3</option>
-                                                        <option >4</option>
-                                                        <option >5</option>
-                                                        <option >6</option>
-                                                        <option >7</option>
-                                                        <option >8</option>
-                                                        <option >9</option>
-                                                        <option >10</option>
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                        <option>5</option>
+                                                        <option>6</option>
+                                                        <option>7</option>
+                                                        <option>8</option>
+                                                        <option>9</option>
+                                                        <option>10</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -180,7 +180,8 @@
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
                                                 data-bs-dismiss="modal">Cancelar</button>
-                                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="updateTechnician(technician.Id, numeroEmpleadoEdit.value, nombresEdit.value, apellidoPaternoEdit.value, apellidoMaternoEdit.value, cuadrillaEdit.value)">Editar</button>
+                                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                                                (click)="updateTechnician(technician.Id, numeroEmpleadoEdit.value, nombresEdit.value, apellidoPaternoEdit.value, apellidoMaternoEdit.value, cuadrillaEdit.value)">Editar</button>
                                         </div>
                                     </div>
                                 </div>
