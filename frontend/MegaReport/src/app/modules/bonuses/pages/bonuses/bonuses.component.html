@@ -1,0 +1,85 @@
+<h5 class="fw-semibold">Bonos</h5>
+
+<div class="mt-5 card-content">
+    <div class="table-responsive mt-4">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Puntos mínimos</th>
+                    <th scope="col">Puntos máximos</th>
+                    <th scope="col">Monto</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let bonus of listTabulator$">
+                    <th scope="row">{{ bonus.Id }}</th>
+                    <td>{{ bonus.Puntos_minimos }}</td>
+                    <td>{{ bonus.Puntos_maximos }}</td>
+                    <td>{{ bonus.Monto }} pesos</td>
+                    <td>
+                        <span class="actions-wrapper">
+                            <button type="button" class="btn p-0" data-bs-toggle="modal"
+                                [attr.data-bs-target]="'#exampleModal' + bonus.Id">
+                                <i class="bi bi-pencil-square"></i>
+                            </button>
+
+                            <div class="modal fade" [id]="'exampleModal' + bonus.Id" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <p class="modal-title fw-semibold" [id]="'exampleModalLabel' + bonus.Id">
+                                                Editar información de técnico </p>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="col-12 col-sm-6 col-md-4 mb-3">
+                                                    <label for="Id" class="form-label fw-medium">ID</label>
+                                                    <input type="number" class="form-control" id="Id" name="Id"
+                                                        [(ngModel)]="bonus.Id" disabled #IdEdit>
+                                                </div>
+
+                                                <div class="col-12"></div>
+
+                                                <div class="col-12 col-sm-6 mb-3">
+                                                    <label for="Puntos_minimos" class="form-label fw-medium">Puntos
+                                                        mínimos</label>
+                                                    <input type="string" class="form-control" id="Puntos_minimos"
+                                                        name="Puntos_minimos" [(ngModel)]="bonus.Puntos_minimos"
+                                                        #Puntos_minimosEdit>
+                                                </div>
+
+                                                <div class="col-12 col-sm-6 mb-3">
+                                                    <label for="Puntos_maximos" class="form-label fw-medium">Puntos
+                                                        máximos</label>
+                                                    <input type="string" class="form-control" id="Puntos_maximos"
+                                                        name="Puntos_maximos" [(ngModel)]="bonus.Puntos_maximos"
+                                                        #Puntos_maximosEdit>
+                                                </div>
+
+                                                <div class="col-12 col-sm-6 mb-3">
+                                                    <label for="monto" class="form-label fw-medium">Monto</label>
+                                                    <input type="string" class="form-control" id="monto" name="monto"
+                                                        [(ngModel)]="bonus.Monto" #montoEdit>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Cancelar</button>
+                                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                                                (click)="updateBonus(bonus.Id, Puntos_minimosEdit.value, Puntos_maximosEdit.value, montoEdit.value)">Editar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

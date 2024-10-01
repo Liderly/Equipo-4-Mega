@@ -21,9 +21,9 @@ export class SideBarComponent implements OnInit {
         router: ['/work-crews']
       },
       {
-        name: 'Ajustes',
-        icon: 'bi bi-gear-fill',
-        router: ['']
+        name: 'Bonos',
+        icon: 'bi bi-wallet-fill',
+        router: ['/bonuses']
       },
       {
         name: 'Salir',

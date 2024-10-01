@@ -1,0 +1,11 @@
+.actions-wrapper {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.modal-content {
+    background-color: var(--card-background);
+    border-color: transparent;
+    border-radius: 15px;
+}
