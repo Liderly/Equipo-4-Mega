@@ -1,11 +1,6 @@
 
 # Calculo de bonos 
 
-Reporte - Equipo - objetivos - Analisis -Proceso - Ideas - Conclusiones
-
-
-
-
 ## Equipo
 
 Integrantes del equipo Equipo-4-Mega (DevHeroes)
