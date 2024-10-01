@@ -26,4 +26,16 @@ export class TechniciansService {
     window.location.reload();
     return this.http.post(`${this.URL}/Tecnicos`, body)
   }
+
+  updateTechnicians$(Id:number, Numero_Empleado:string, Nombre:string, Apellido_p:string, Apellido_m:string, CuadrillaId:string):Observable<any>{
+    const body = {
+      Id,
+      Numero_Empleado,
+      Nombre,
+      Apellido_p,
+      Apellido_m,
+      CuadrillaId
+    }
+    return this.http.put(`${this.URL}/Tecnicos`, body)
+  }
 }

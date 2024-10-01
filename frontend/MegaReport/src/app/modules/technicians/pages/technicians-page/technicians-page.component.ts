@@ -30,7 +30,12 @@ export class TechniciansPageComponent implements OnInit, OnDestroy{
   addTechnician(nombres:string, apellidoPaterno:string, apellidoMaterno:string, cuadrilla: string, numeroEmpleado:string){
     this.techniciansService.setTechnicians$(numeroEmpleado,nombres,apellidoPaterno,apellidoMaterno,cuadrilla)
     .subscribe(resp => {
-      console.log(resp)
+    })
+  }
+
+  updateTechnician(TecnicoId:number, Numero_Empleado:string, Nombre:string, Apellido_p:string, Apellido_m:string, CuadrillaId:string){
+    this.techniciansService.updateTechnicians$(TecnicoId, Numero_Empleado, Nombre, Apellido_p, Apellido_m, CuadrillaId)
+    .subscribe(resp => {
     })
   }
 }

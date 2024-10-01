@@ -129,7 +129,7 @@
                                                         empleado</label>
                                                     <input type="number" class="form-control" id="numeroEmpleado"
                                                         name="numeroEmpleado" [(ngModel)]="technician.Numero_empleado"
-                                                        disabled>
+                                                        disabled #numeroEmpleadoEdit>
                                                 </div>
 
                                                 <div class="col-0 col-sm-12"></div>
@@ -137,21 +137,21 @@
                                                 <div class="col-12 col-sm-6 mb-3">
                                                     <label for="nombres" class="form-label fw-medium">Nombre(s)</label>
                                                     <input type="string" class="form-control" id="nombres"
-                                                        name="nombres" [(ngModel)]="technician.Nombres">
+                                                        name="nombres" [(ngModel)]="technician.Nombres" #nombresEdit>
                                                 </div>
 
                                                 <div class="col-12 col-sm-6 mb-3">
                                                     <label for="apellidoPaterno" class="form-label fw-medium">Apellido
                                                         paterno</label>
                                                     <input type="string" class="form-control" id="apellidoPaterno"
-                                                        name="apellidoPaterno" [(ngModel)]="technician.Apellido_p">
+                                                        name="apellidoPaterno" [(ngModel)]="technician.Apellido_p" #apellidoPaternoEdit>
                                                 </div>
 
                                                 <div class="col-12 col-sm-6 mb-3">
                                                     <label for="apellidoMaterno" class="form-label fw-medium">Apellido
                                                         materno</label>
                                                     <input type="string" class="form-control" id="apellidoMaterno"
-                                                        name="apellidoMaterno" [(ngModel)]="technician.Apellido_m">
+                                                        name="apellidoMaterno" [(ngModel)]="technician.Apellido_m" #apellidoMaternoEdit>
                                                 </div>
 
                                                 <div class="col-0 col-sm-12"></div>
@@ -160,19 +160,19 @@
                                                     <label for="apellidoMaterno"
                                                         class="form-label fw-medium">Cuadrilla</label>
                                                     <select class="form-select" name="cuadrilla"
-                                                        [(ngModel)]="technician.CuadrillaId">
+                                                        [(ngModel)]="technician.CuadrillaId" #cuadrillaEdit>
                                                         <option [ngValue]="null" disabled>Selecciona una cuadrilla...
                                                         </option>
-                                                        <option [ngValue]="1">Cuadrilla 1</option>
-                                                        <option [ngValue]="2">Cuadrilla 2</option>
-                                                        <option [ngValue]="3">Cuadrilla 3</option>
-                                                        <option [ngValue]="4">Cuadrilla 4</option>
-                                                        <option [ngValue]="5">Cuadrilla 5</option>
-                                                        <option [ngValue]="6">Cuadrilla 6</option>
-                                                        <option [ngValue]="7">Cuadrilla 7</option>
-                                                        <option [ngValue]="8">Cuadrilla 8</option>
-                                                        <option [ngValue]="9">Cuadrilla 9</option>
-                                                        <option [ngValue]="10">Cuadrilla 10</option>
+                                                        <option >1</option>
+                                                        <option >2</option>
+                                                        <option >3</option>
+                                                        <option >4</option>
+                                                        <option >5</option>
+                                                        <option >6</option>
+                                                        <option >7</option>
+                                                        <option >8</option>
+                                                        <option >9</option>
+                                                        <option >10</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -180,7 +180,7 @@
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
                                                 data-bs-dismiss="modal">Cancelar</button>
-                                            <button type="button" class="btn btn-primary">Guardar cambios</button>
+                                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="updateTechnician(technician.Id, numeroEmpleadoEdit.value, nombresEdit.value, apellidoPaternoEdit.value, apellidoMaternoEdit.value, cuadrillaEdit.value)">Editar</button>
                                         </div>
                                     </div>
                                 </div>
