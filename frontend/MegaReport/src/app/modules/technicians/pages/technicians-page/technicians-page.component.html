@@ -28,20 +28,26 @@
                             <div class="row">
                                 <div class="col-12 col-sm-6 mb-3">
                                     <label for="nombres" class="form-label fw-medium">Nombre(s)</label>
-                                    <input type="string" class="form-control" id="nombres" name="nombres">
+                                    <input type="string" class="form-control" #nombres name="nombres">
                                 </div>
 
                                 <div class="col-12 col-sm-6 mb-3">
                                     <label for="apellidoPaterno" class="form-label fw-medium">Apellido
                                         paterno</label>
-                                    <input type="string" class="form-control" id="apellidoPaterno"
+                                    <input type="string" class="form-control" #apellidoPaterno
                                         name="apellidoPaterno">
                                 </div>
 
                                 <div class="col-12 col-sm-6 mb-3">
                                     <label for="apellidoMaterno" class="form-label fw-medium">Apellido
                                         materno</label>
-                                    <input type="string" class="form-control" id="apellidoMaterno"
+                                    <input type="string" class="form-control" #apellidoMaterno
+                                        name="apellidoMaterno">
+                                </div>
+
+                                <div class="col-12 col-sm-6 mb-3">
+                                    <label for="apellidoMaterno" class="form-label fw-medium">Numero de empleado</label>
+                                    <input type="string" class="form-control" #numeroEmpleado
                                         name="apellidoMaterno">
                                 </div>
 
@@ -49,26 +55,26 @@
 
                                 <div class="col-12 mb-3">
                                     <label for="apellidoMaterno" class="form-label fw-medium">Cuadrilla</label>
-                                    <select class="form-select" name="cuadrilla">
+                                    <select class="form-select" name="cuadrilla" #cuadrilla>
                                         <option [ngValue]="null" disabled>Selecciona una cuadrilla...
                                         </option>
-                                        <option [ngValue]="1">Cuadrilla 1</option>
-                                        <option [ngValue]="2">Cuadrilla 2</option>
-                                        <option [ngValue]="3">Cuadrilla 3</option>
-                                        <option [ngValue]="4">Cuadrilla 4</option>
-                                        <option [ngValue]="5">Cuadrilla 5</option>
-                                        <option [ngValue]="6">Cuadrilla 6</option>
-                                        <option [ngValue]="7">Cuadrilla 7</option>
-                                        <option [ngValue]="8">Cuadrilla 8</option>
-                                        <option [ngValue]="9">Cuadrilla 9</option>
-                                        <option [ngValue]="10">Cuadrilla 10</option>
+                                        <option [ngValue]="1">1</option>
+                                        <option [ngValue]="2">2</option>
+                                        <option [ngValue]="3">3</option>
+                                        <option [ngValue]="4">4</option>
+                                        <option [ngValue]="5">5</option>
+                                        <option [ngValue]="6">6</option>
+                                        <option [ngValue]="7">7</option>
+                                        <option [ngValue]="8">8</option>
+                                        <option [ngValue]="9">9</option>
+                                        <option [ngValue]="10">10</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn btn-primary">Guardar cambios</button>
+                            <button type="button" class="btn btn-primary" (click)="addTechnician(nombres.value, apellidoPaterno.value, apellidoMaterno.value, cuadrilla.value, numeroEmpleado.value)">Agregar</button>
                         </div>
                     </div>
                 </div>
@@ -90,7 +96,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let technician of listTechnicians$ | search:textSearch">
-                    <th scope="row">{{technician.Id}}</th>
+                    <th scope="row">{{technician.Numero_empleado}}</th>
                     <td>{{technician.Nombres}}</td>
                     <td>{{technician.Apellido_p}}</td>
                     <td>{{technician.Apellido_m}}</td>
