@@ -27,7 +27,6 @@ namespace MegaReports.Controllers
                                 OT.Estatus AS EstatusOrdenTrabajo,
                                 T.Nombre AS NombreTrabajo,
                                 T.Descripcion AS DescripcionTrabajo,
-                                T.Puntos_bono AS PuntosBonoTrabajo,                              
                                 C.Nombre AS NombreCuadrilla,  
                                 S.Nombres AS NombresSuscriptior,
                                 S.Apellido_p AS ApellidoPSuscriptior,
@@ -37,19 +36,21 @@ namespace MegaReports.Controllers
                                 S.Codigo_postal AS CodigoPostalSuscriptor,
                                 S.Colonia AS ColoniaSuscriptor,
                                 S.Telefono AS TelefonoSuscriptor,
-								TE.Id AS IdTecnico,
-								TE.Nombres AS Nombres,
-								TE.Apellido_p AS ApellidoPTecnico,
-								TE.Apellido_m AS ApellidoMTecnico,
-								TE.Numero_empleado AS NumeroEmpleado,
-								TE.CuadrillaId AS CuadrillaIdTecnico
+                                TE.Id AS IdTecnico,
+                                TE.Nombres AS Nombres,
+                                TE.Apellido_p AS ApellidoPTecnico,
+                                TE.Apellido_m AS ApellidoMTecnico,
+                                TE.Numero_empleado AS NumeroEmpleado,
+                                TE.CuadrillaId AS CuadrillaIdTecnico
                             FROM Ordenes_trabajo OT
                             JOIN Tecnicos TE ON TE.CuadrillaId = OT.CuadrillaId
                             JOIN Trabajos T ON T.Id = OT.TrabajoId
                             JOIN Cuadrillas C ON C.Id = OT.CuadrillaId 
                             JOIN Suscriptores S ON S.Id = OT.SuscriptorId 
-                            WHERE TE.Id = @Id";
-
+                            WHERE TE.Id = 1
+                            AND OT.Estatus = 'Finalizado'
+                            AND OT.Tiempo_finalizado >= DATEADD(DAY, 1 - DATEPART(WEEKDAY, GETDATE()), CAST(GETDATE() AS DATE))  -- Desde el domingo pasado (29)
+                            AND OT.Tiempo_finalizado <  DATEADD(DAY, 8 - DATEPART(WEEKDAY, GETDATE()), CAST(GETDATE() AS DATE)); -- Hasta el fin del sábado (5)";
             var parameters = new[]
             {
                 new SqlParameter("@Id", id)
