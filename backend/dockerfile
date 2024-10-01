@@ -1,0 +1,20 @@
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /app
+
+EXPOSE 8080
+
+COPY MegaReports/MegaReports.csproj ./MegaReports/
+RUN dotnet restore ./MegaReports/MegaReports.csproj
+
+COPY MegaReports/ ./MegaReports/
+WORKDIR /app/MegaReports
+RUN dotnet publish -c Release -o /app/out
+
+FROM mcr.microsoft.com/dotnet/aspnet:8.0
+WORKDIR /app
+
+COPY --from=build /app/out .
+
+ENV ASPNETCORE_ENVIRONMENT=Development
+
+ENTRYPOINT ["dotnet", "MegaReports.dll"]
