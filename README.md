@@ -250,7 +250,7 @@ BEGIN
     DECLARE @FechaInicioSemana DATE;
     DECLARE @FechaFinSemana DATE;
 
-    SET DATEFIRST 7;
+    SET DATEFIRST 1;
 
     -- Obtener el día de la semana actual (7 = Domingo, 6 = Sábado)
     SET @DiaSemana = DATEPART(WEEKDAY, @Hoy);
@@ -262,7 +262,7 @@ BEGIN
     SET @FechaFinSemana = DATEADD(DAY, (7 - (CASE WHEN @DiaSemana = 7 THEN 0 ELSE @DiaSemana END)), @Hoy);
 
 
-    SET DATEFIRST 1;
+    SET DATEFIRST 7;
 
     -- Imprimir la semana inicial y final
     PRINT 'Fecha Inicio de la Semana: ' + CONVERT(VARCHAR, @FechaInicioSemana, 23);
