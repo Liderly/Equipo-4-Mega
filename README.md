@@ -1,9 +1,9 @@
-
-# Calculo de bonos 
+# Calculo de bonos
 
 ## Equipo
 
 Integrantes del equipo Equipo-4-Mega (DevHeroes)
+
 - Agustín Aguilar Eusebio
 - Jesus Antonio Leyva Apodaca
 - Diana Lizeth Alcala Sandoval
@@ -15,43 +15,51 @@ Integrantes del equipo Equipo-4-Mega (DevHeroes)
 El desarrollo del proyecto se llevó a cabo de manera altamente eficiente, con cada miembro del equipo desempeñando su rol con precisión y responsabilidad. La colaboración fue clave para optimizar los tiempos y la calidad del trabajo, permitiendo que cada persona, desde el backend hasta la gestión de la base de datos, aportara su experiencia de forma efectiva. Gracias a esta sinergia, se alcanzaron los objetivos del proyecto y dentro de los plazos establecidos.
 
 ## Frontend
+
 - Diana Lizeth Alcala Sandoval
 - Jonatan Leonardo Rodriguez Ocampo
+
 1. Desarrollo de Interfaz
-2. Integracion de Backend con Frontend
-3. Creacion de Servicios para el consumo de apis
-4. Gestion de Github para el proyecto.
+2. Integración de Backend con Frontend
+3. Creación de servicios para el consumo de API's
+4. Gestión de Github para el proyecto.
 
 ## Backend
+
 - Bryan Shaloat Be Barragan Pulido
-1. Gestion de comunicacion entre la aplicacion y la base de datos
-2. Creacion de apis
-3. Creacion de servicios para procesos almacenados 
+
+1. Gestión de comunicación entre la aplicación y la base de datos
+2. Creación de API's
+3. Creación de servicios para procesos almacenados
 4. Procesamiento de solicitudes
 
 ## Bases de datos
+
 - Agustín Aguilar Eusebio
 - Jesus Antonio Leyva Apodaca
-1. Creacion de la base de datos
-2. Creacion de Tablas y estructura general
-3. Creacion de Procesos almacenados
-4. Diseno de esquema
+
+1. Creación de la base de datos
+2. Creación de tablas y estructura general
+3. Creación de rocesos almacenados
+4. Diseño de esquema
 
 # Proyecto - Calculo de Bonos
 
 Se requiere un sistema eficiente para calcular los bonos semanales de los técnicos colaboradores de Megacable. Cada técnico pertenece a una cuadrilla de trabajo, y a estas cuadrillas se les asignan órdenes de trabajo que detallan las tareas a realizar para los suscriptores. Cada tarea completada o finalizada en una orden de trabajo otorga una cierta cantidad de puntos, los cuales serán acumulados para el cálculo del bono semanal.
 
 El sistema deberá integrar un tabulador de puntos, que define los rangos de puntos acumulados y los montos correspondientes al bono a pagar. Este tabulador permitirá determinar con precisión el monto que cada colaborador recibirá, según los puntos obtenidos por las tareas finalizadas dentro del período evaluado.
-# Analisis
+
+# Análisis
 
 Comenzamos por el análisis del problema, para poder modelar entidades en una base de datos, y eso no fue muy difícil al principio ya que solo teníamos que considerar entidades obvias que estaban fuertemente o directamente relacionadas como: "Técnico", "Trabajo", "Cuadrilla", "Orden de trabajo". Pero a la hora de querer abstraer la entidad de los puntos, allí fue donde se requería un poco más de análisis.
 
 Nos fuimos por un enfoque en el que tenemos una tabla para almacenar los tabuladores de pago y así calcular el monto a pagar. En un principio se quería solamente calcular ese monto y esos puntos con procedimientos almacenados y no guardarlo en ningun sitio, pero más adelante quisimos agregar un campo a la tabla del técnico para tener un registro de cuánto se le pagó o debería pagar en el "periodo" o semana actual, ya que el cálculo debe ser semanal.
+
 # Procesos
 
-Comenzamos con la cracion y el proceso para la base de datos ya que fue nuestro mayor enfoque al comienzo del proyecto y durante su desarrollo.
+Comenzamos con la creación y el proceso para la base de datos ya que fue nuestro mayor enfoque al comienzo del proyecto y durante su desarrollo.
 
-## Base de datos 
+## Base de datos
 
 Este es un diagrama de como sería la base de datos
 ![Descripción de la imagen](./imgs/db.png)
@@ -59,7 +67,7 @@ Este es un diagrama de como sería la base de datos
 Este es el diagrama entidad relacion
 ![Descripción de la imagen](./imgs/er.jpeg)
 
-Estas son las quieries necesarias para crear la base de datos y sus tablas:
+Estas son las queries necesarias para crear la base de datos y sus tablas:
 
 ```
 create database Hackaton;
@@ -126,11 +134,10 @@ CREATE TABLE Ordenes_trabajo(
 
 ```
 
-Algunos datos para poblar la base de datos 
-
+Algunos datos para probar la base de datos
 
 ```
-INSERT INTO Bonos (Puntos_minimos, Puntos_maximos, Monto) VALUES 
+INSERT INTO Bonos (Puntos_minimos, Puntos_maximos, Monto) VALUES
 (0, 80, 0.00),
 (81, 150, 300.00),
 (151, 210, 500.00),
@@ -148,7 +155,7 @@ INSERT INTO Cuadrillas (Nombre) VALUES
 ('Cuadrilla 9'),
 ('Cuadrilla 10');
 
-INSERT INTO Tecnicos (Numero_empleado, Nombres, Apellido_p, Apellido_m, CuadrillaId) VALUES 
+INSERT INTO Tecnicos (Numero_empleado, Nombres, Apellido_p, Apellido_m, CuadrillaId) VALUES
 ('1', 'Juan', 'Perez', 'Garcia', 1),
 ('2', 'Luis', 'Hernandez', 'Martinez', 2),
 ('3', 'Carlos', 'Gomez', 'Rodriguez', 3),
@@ -160,7 +167,7 @@ INSERT INTO Tecnicos (Numero_empleado, Nombres, Apellido_p, Apellido_m, Cuadrill
 ('9', 'Ricardo', 'Castillo', 'Ortiz', 9),
 ('10', 'Andres', 'Morales', 'Reyes', 10);
 
-INSERT INTO Suscriptores (Nombres, Apellido_p, Apellido_m, Calle, Numero_interior, Numero_exterior, Codigo_postal, Colonia, Telefono) VALUES 
+INSERT INTO Suscriptores (Nombres, Apellido_p, Apellido_m, Calle, Numero_interior, Numero_exterior, Codigo_postal, Colonia, Telefono) VALUES
 ('Maria', 'Gonzalez', 'Lopez', 'Av. Siempre Viva', '10', '5', '12345', 'Centro', '3321325355'),
 ('Ana', 'Perez', 'Ramirez', 'Calle 2', '2A', '3', '67890', 'Norte', '3321325355'),
 ('Lucia', 'Hernandez', 'Soto', 'Calle 3', '4', '12', '54321', 'Sur', '3321325355'),
@@ -172,7 +179,7 @@ INSERT INTO Suscriptores (Nombres, Apellido_p, Apellido_m, Calle, Numero_interio
 ('Marta', 'Lara', 'Ruiz', 'Calle 9', 'E', '12', '12345', 'Este', '3321325355'),
 ('Sofia', 'Moreno', 'Perez', 'Calle 10', 'F', '13', '34567', 'Centro', '3321325355');
 
-INSERT INTO Trabajos (Nombre, Descripcion, Puntos_bono) VALUES 
+INSERT INTO Trabajos (Nombre, Descripcion, Puntos_bono) VALUES
 ('Instalacion de fibra optica', 'Instalacion de cableado para fibra optica', 300),
 ('Reparacion de modem', 'Reparacion y configuracion de modem', 150),
 ('Mantenimiento de redes', 'Mantenimiento preventivo de redes', 250),
@@ -189,7 +196,6 @@ INSERT INTO Trabajos (Nombre, Descripcion, Puntos_bono) VALUES
 En la tabla de bonos tengo 3 campos además del ID del bono. Tengo puntos mínimos, puntos máximos y el monto.
 
 Tengo un -1 en el rango más alto de Bonos, porque no encontré otra manera de implementar que si los puntos de un técnico eran más del último rango, te devolviera el último monto, y esto lo saqué con un procedimiento almacenado, que si no encuentra el rango al que pertenece en puntos, pues buscara el -1 en puntos_maximos y devolviera ese bono, lo que me da entrada a mostrar los procedimientos almacenados que se utilizan para los cálculos:
-
 
 ```
 CREATE PROCEDURE ObtenerMontoPorPuntos
@@ -222,16 +228,16 @@ BEGIN
 END;
 ```
 
-Este procedimiento almacenado recibe como parámetro cierta cantidad de puntos y regresa un monto decimal de 4 dígitos de precision.
+Este procedimiento almacenado recibe como parámetro cierta cantidad de puntos y regresa un monto decimal de 4 dígitos de precisión.
 
-Primero se valida si los puntos son menores de 0, por si las moscas y regresa 0 de monto.
+Primero se valida si los puntos son menores de 0 y regresa 0 de monto.
 
-Segundo buscar si entra el algún rango de la tabla de puntos, si sí entra, pues regresa ese resultado.
+Después busca si entra el algún rango de la tabla de puntos, si sí entra, regresa ese resultado.
 
-Para finalizar, si no encuentra ninguna coincidencia, entonces regresa el montoque tiene como puntos maximos -1.
+Para finalizar, si no encuentra ninguna coincidencia, entonces regresa el monto que tiene como puntos maximos -1.
 
+Ahora para obtener los puntos por técnico:
 
-Ahora para ontener los puntos por técnico:
 ```
 CREATE PROCEDURE ObtenerPuntosTecnicoPorSemanaAutomatica (
     @TecnicoId INT,
@@ -249,7 +255,7 @@ BEGIN
 
     -- Calcular el inicio de la semana (Sábado anterior)
     SET @FechaInicioSemana = DATEADD(DAY, -(CASE WHEN @DiaSemana = 7 THEN 0 ELSE @DiaSemana END), @Hoy);
-    
+
     -- Calcular el fin de la semana (Domingo siguiente para considerar todo el dia sábado)
     SET @FechaFinSemana = DATEADD(DAY, (7 - (CASE WHEN @DiaSemana = 7 THEN 0 ELSE @DiaSemana END)), @Hoy);
 
@@ -278,12 +284,11 @@ BEGIN
 END;
 ```
 
-Este procedimiento recibe un id de técnico y regresa el total de puntos obtenidos en la semana, se encuentra el día que sea sábado de esta semana y se coloca como "FechaInicioSemana". Si el día de la semana es distinto de 7 (o sea, si es distinto a sabado), solo hay que restarle al día de hoy el número de día que es hoy. Si hoy es sabado, entonces no se resta nada.
+Este procedimiento recibe un id de técnico y regresa el total de puntos obtenidos en la semana, se encuentra el día que sea sábado de esta semana y se coloca como "FechaInicioSemana". Si el día de la semana es distinto de 7 (o sea, si es distinto a sábado), solo hay que restarle al día de hoy el número de día que es hoy. Si hoy es sábado, entonces no se resta nada.
 
 Y para la fecha final, si hoy es domingo, agregarle 7 días para llegar al otro domingo, porque se considera todo el sábado hasta las 23 horas con 59 minutos y 59 segundos.
 
-
-Ahora para obtener el monto por técnico, se hace una combinacion de ambos procedimientos:
+Ahora para obtener el monto por técnico, se hace una combinación de ambos procedimientos:
 
 ```
 CREATE PROCEDURE ObtenerMontoTotalTecnico (
@@ -307,8 +312,7 @@ END;
 
 Se tienen que agregar estos procedimientos a su base de datos para que funcione el sistema, ya que de aquí obtenemos la información necesaria para mostrar los resultados de los bonos.
 
-Para probarlo, utilizé estos registros, que para el técnico 1, hay 4 ordenes de trabajo, 3 entran dentro de la semana del 29 de septiembre del 2024 a 5 de octubre del 2024. Tengo un registrop del 6 de octubre del 2024 para mostrar que no se considera ese registro.
-
+Para probarlo, utilizé estos registros, que para el técnico 1, hay 4 ordenes de trabajo, 3 entran dentro de la semana del 29 de septiembre del 2024 a 5 de octubre del 2024. Tengo un registro del 6 de octubre del 2024 para mostrar que no se considera ese registro.
 
 ```
 INSERT INTO Ordenes_trabajo (Tiempo_registro, Tiempo_finalizado, Estatus, CuadrillaId, SuscriptorId, TrabajoId) VALUES
@@ -413,52 +417,119 @@ BEGIN
 END;
 GO
 ```
+
 ## Backend
 
-Para el backend se creo un sistema sencillo de apis y servicios que gestionara la comunicacion con la base de datos y las peticiones de cliente
+Para el backend se creo un sistema sencillo de API's y servicios que gestionara la comunicación con la base de datos y las peticiones de cliente
 
-Apis
+API's
 
-Obtner Tecnicos
+Obtener Tecnicos
+
 ```
-GET http://localhost:5000/api/Tecnicos  
+GET http://localhost:5000/api/Tecnicos
 ```
-Editar Tecnicos 
+
+Editar Tecnicos
+
 ```
 PUT http://localhost:5000/api/Tecnicos
 ```
+
 Agregar Tecnicos
+
 ```
-POST http://localhost:5000/api/Tecnicos  
+POST http://localhost:5000/api/Tecnicos
 ```
+
 Obtener Cuadrilla
+
 ```
 GET http://localhost:5000/api/Cuadrillas
 ```
-Obtener tecnicos que pertenecen a una cuadrilla 
+
+Obtener tecnicos que pertenecen a una cuadrilla
+
 ```
 GET http://localhost:5000/api/Tecnicos-Cuadrilla
 ```
+
 Obetener Tabulador
+
 ```
 GET http://localhost:5000/api/Tabulator
 ```
+
 Actualizar tabulador
+
 ```
 POST http://localhost:5000/api/UpdatePuntos
 ```
+
 Obtener Ordenes de trabajo
+
 ```
 GET http://localhost:5000/api/ordenes
 ```
+
 Obtener Monto x Tecnicos
+
 ```
 GET http://localhost:5000/api/MontoxTecnico
 ```
+
 El uso de servicios para gestionar los procedimientos almacenados que permiten el cálculo de los datos fue implementado de manera eficiente y sin mayores complicaciones. Estos servicios están diseñados para interactuar de forma óptima con los procedimientos almacenados en la base de datos, lo que asegura una comunicación fluida y precisa. Esta arquitectura simplifica la lógica del cálculo y garantiza la precisión y velocidad en la obtención de resultados.
 
 ## Frontend
 
+El front-end se desarrolló utilizando Angular en su versión 16 junto con Node.js en la versión 18.20.4. Para el proyecto, se realizaron los siguientes componentes:
+
+-LoginPageComponent: Muestra un inicio de sesión.
+-BonusesComponent: Muestra los bonos que reciben los técnicos, y los puntos mínimos y máximos que corresponden a los bonos.
+-OrdersPageComponent: Muestra información relacionada al técnico y sus órdenes de trabajo (finalizadas, en espera, en proceso y canceladas), además permite la descarga de un PDF y un XLSX con un reporte de las órdenes de trabajo con su respectivo bono.
+-TechniciansPageComponent: Muestra un listado de los técnicos y su información, también permite editar la información de un técnico y agregar un nuevo técnico.
+-WorkCrewsComponent: Muestra un listado de las cuadrillas.
+
+De igual manera, creamos los siguientes servicios para el funcionamiento de nuestro sistema:
+
+-BonusesService: Este servicio consta de dos funciones: getTabulator$, que obtiene el tabulador de los bonos; y updateBonus$, que permite la actualización de los bonos.
+-OrdersService: En este servicio encontramos dos funciones: getOrders$, que obtiene información del técnico y las órdenes de trabajo que tiene asignadas; y getTotalAmount$, que obtiene el monto total que se le pagará al técnico por las órdenes de trabajo que haya realizado.
+-TechniciansService: Este servicio tiene tres funciones: getTechnicians$, que obtiene el listado de técnicos; setTechnicians$, que permite la creación de un nuevo técnico; y updateTechnicians$, que permite la actualización de un técnico.
+-WorkCrewsService: Este servicio se dedica exclusivamente a traer la información de las cuadrillas con la función: getWorkCrews$.
+
+Asimismo se hizo uso de un pipe, SearchPipe, que permite la búsqueda de técnicos.
+
+A continuación, se muestran imágenes del sistema en funcionamiento.
+
+Inicio de sesión
+![](/imgs/inicio_sesion.png)
+
+Listado de técnicos
+![](/imgs/tecnicos.png)
+
+Formulario para editar técnico
+![](/imgs/editar_tecnico.png)
+
+Formulario para agregar técnico
+![](/imgs/agregar_tecnico.png)
+
+Información de técnico
+![](/imgs/tecnico.png)
+
+PDF generado
+![](/imgs/pdf_bonos.png)
+
+Excel generado
+![](/imgs/excel_bonos.png)
+
+Listado de cuadrillas
+![](/imgs/cuadrillas.png)
+
+Listado de bonos
+![](/imgs/bonos.png)
+
+Formulario para editar bono
+![](/imgs/editar_bono.png)
 
 ## Resultados y soluciones
 
