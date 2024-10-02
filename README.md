@@ -358,7 +358,11 @@ INSERT INTO Ordenes_trabajo (Tiempo_registro, Tiempo_finalizado, Estatus, Cuadri
 ('2024-10-01T16:45:00', NULL, 'En progreso', 10, 2, 2);
 ```
 
-Para hacer el cálculo de todos los técnicos y asignar a su campo de "bono_semana_actual", se utiliza el siguiente procedimiento almacenado. Este está pensado para ejecutarse cada semana con una tarea programada en la base de datos.
+Para hacer el cálculo de todos los técnicos y asignar a su campo de "bono_semana_actual", se utiliza el siguiente procedimiento almacenado. Este está pensado para ejecutarse cada semana con una tarea programada en la base de datos o con el programador de tareas de windows con.
+
+```
+sqlcmd -S servidor -d basededatos -U usuario -P pass -Q "EXECUTE ActualizarBonoSemana"
+```
 
 ```
 CREATE PROCEDURE ActualizarBonoSemana
