@@ -1,1 +1,0 @@
-# Explicación de arquitectura
